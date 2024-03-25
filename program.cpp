@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<conio.h>
 using namespace std;
 
 class Car{
@@ -10,6 +11,7 @@ class Car{
   bool carStart;
   bool breakApply;
   int currentPosition=0;
+  char moveForward;
 
   public:
 
@@ -67,12 +69,20 @@ class Car{
 
       if(carStart && gear){
 
+       do{
+        moveForward=_getch();
+
+        if(moveForward=='w'){
+          currentPosition+=speed;
+          cout<<currentPosition<<endl;
+        }
+        else if(moveForward=='s'){
+          break;
+        }
 
 
 
-
-
-
+       }while(true);
 
       }
 
@@ -95,7 +105,9 @@ int main(){
 
 Car c1;
 c1.startCar(true);
+c1.setGear(2);
 c1.driveCar();
+c1.moveCar();
 
 
 
