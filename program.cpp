@@ -123,14 +123,31 @@
 #include<iostream>
 #include<string>
 using namespace std;
+
+ class Circle{
+    private:
+    double pi=3.141569;
+    double radius;
+    public:
+    void setRadius(double radius){
+      this->radius=radius;
+    }
+    void circleArea(){
+      cout<<"The radius is "<<pi*(radius*radius)<<endl;
+    }
+ };
+
+
+
+
+
+
+
 int main(){
 
-string names[5]={"ahmad","ali","danyal","suama","bilal"};
-for(int i=0;i<5;i++){
-  cout<<(names+i)<<endl;
-}
-
-
+ Circle c1;
+ c1.setRadius(8);
+ c1.circleArea();
 
 
 
