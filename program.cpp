@@ -126,7 +126,9 @@ using namespace std;
 int main(){
 
 string names[5]={"ahmad","ali","danyal","suama","bilal"};
-cout<<*names<<endl;
+for(int i=0;i<5;i++){
+  cout<<(names+i)<<endl;
+}
 
 
 
