@@ -201,11 +201,29 @@ using namespace std;
         cout<<"publishYear:"<<publishYear<<endl;
       }
 
-
-
-
  };
 
+class Transaction:public Books{
+   
+   protected:
+   void borrowBook(){
+    cout<<"You borrow the book "<<endl;
+     bookInfo();
+   }
+   void returnBook(){
+    cout<<"You return the book "<<endl;
+     bookInfo();
+   }
+   void giveBook(){
+    cout<<"You give the book "<<endl;
+     bookInfo();
+   }
+   void takeBook(){
+    cout<<"You take the book "<<endl;
+     bookInfo();
+   }
+   
+};
 
 
 
