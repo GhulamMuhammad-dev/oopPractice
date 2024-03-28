@@ -182,6 +182,31 @@ using namespace std;
  };
 
 
+ class Books{
+      private:
+      string title;
+      string author;
+      int publishYear;
+      public:
+      Books(){};
+      Books(string title,string author,int pusblishYear){
+        this->title=title;
+        this->publishYear=pusblishYear;
+        this->author=author;
+      }
+
+      void bookInfo(){
+        cout<<"title:"<<title<<endl;
+        cout<<"author:"<<author<<endl;
+        cout<<"publishYear:"<<publishYear<<endl;
+      }
+
+
+
+
+ };
+
+
 
 
 
