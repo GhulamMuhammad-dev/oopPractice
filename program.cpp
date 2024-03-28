@@ -120,21 +120,65 @@
 // }
 
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+//  class Circle{
+//     private:
+//     double pi=3.141569;
+//     double radius;
+//     public:
+//     void setRadius(double radius){
+//       this->radius=radius;
+//     }
+//     void circleArea(){
+//       cout<<"The radius is "<<pi*(radius*radius)<<endl;
+//     }
+//  };
+
+
+
+
+
+
+
+// int main(){
+
+
+//  Circle *c2;
+ 
+//  c2=new Circle;
+
+//  c2->setRadius(5);
+//  c2->circleArea();
+
+
+
+
+//   return 0;
+// }
+
 #include<iostream>
 #include<string>
 using namespace std;
 
- class Circle{
-    private:
-    double pi=3.141569;
-    double radius;
-    public:
-    void setRadius(double radius){
-      this->radius=radius;
-    }
-    void circleArea(){
-      cout<<"The radius is "<<pi*(radius*radius)<<endl;
-    }
+ class Libarary{
+  private:
+  string name;
+  string address;
+  public:
+  Libarary(){};
+  Libarary(string na,string add){
+    name=na;
+    address=add;
+  }
+   
+   void showInfo(){
+    cout<<"The name of libraray is "<<name<<" The address is "<<address<<endl;
+   }
+
+
  };
 
 
@@ -143,15 +187,10 @@ using namespace std;
 
 
 
+
+
+
+
 int main(){
-
- Circle c1;
- c1.setRadius(8);
- c1.circleArea();
-
-
-
-
-
   return 0;
 }
