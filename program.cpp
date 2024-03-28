@@ -226,6 +226,55 @@ class Transaction:public Books{
 };
 
 
+class Member:public Transaction{
+        private:
+        string name;
+        string address;
+        string status;
+        public:
+        
+        Member(){};
+          Member(string name,string address,string status){
+          this->name=name;
+          this->address=address;
+          this->status=status;
+      };
+
+      string checkStatus(){
+        return status=="student"?"std":"work";
+      }
+
+      void statusStudent(){
+        char option;
+        cout<<"You want to borrow the book or return the book b/r"<<endl;
+        cin>>option;
+        if(option=='b'){
+          borrowBook();
+        }
+        else if(option=='r'){
+          returnBook();
+        }
+      }
+
+ void statusWorker(){
+        char option;
+        cout<<"You want to give the book or take the book g/t"<<endl;
+        cin>>option;
+        if(option=='g'){
+          giveBook();
+        }
+        else if(option=='t'){
+         takeBook();
+        }
+      }
+
+
+
+
+
+};
+
+
 
 
 
