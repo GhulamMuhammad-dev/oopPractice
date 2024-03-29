@@ -320,56 +320,62 @@
 // }
 
 
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
+
 using namespace std;
 
-class Books{
-    private:
+class Book {
+private:
     string title;
-    int publishYear;
-    int count;
-    public:
-    Books(){
-      title="none";
-      publishYear=0;
-      count=0;
+    string author;
+    int publicationYear;
+public:
+    // Default constructor
+    Book() {}
+
+    // Parameterized constructor
+    Book(const string& t, const string& a, int year) : title(t), author(a), publicationYear(year) {}
+
+    // Method to input book information
+    void input() {
+        cout << "Enter title: ";
+        getline(cin, title);
+
+        cout << "Enter author: ";
+        getline(cin, author);
+
+        cout << "Enter publication year: ";
+        cin >> publicationYear;
+        
+        // Consume the newline character left in the input buffer
+        cin.ignore();
     }
-    Books(string title,int publishYear){
-      count++;
-      this->title=title;
-      this->publishYear=publishYear;
+
+    // Method to display book information
+    void display() {
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Publication Year: " << publicationYear << endl;
     }
-
-   void showInfo(){
-    cout<<"index:"<<count<<endl;
-    cout<<"title:"<<title<<endl;
-    cout<<"publishYear:"<<publishYear<<endl;
-   }
-
-
-
-
-
 };
 
-int main(){
+int main() {
+    const int numBooks = 3; // Number of books
+    Book books[numBooks];   // Array of Book objects
 
-  Books books[10];
-  cout<<"Enter the info for the books"<<endl;
-  string title;
-  int publishYear;
+    // Input book information
+    for (int i = 0; i < numBooks; ++i) {
+        cout << "Enter information for Book " << i + 1 << ":" << endl;
+        books[i].input();
+    }
 
-  for(int i=0;i<10;i++){
-    cout<<"Next book"<<endl;
-    cin>>title;
-    cin>>publishYear;
-    books[i]={title,publishYear};
-  }
+    // Display book information
+    cout << "\nBook Information:\n";
+    for (int i = 0; i < numBooks; ++i) {
+        cout << "\nBook " << i + 1 << ":\n";
+        books[i].display();
+    }
 
-
-  for(int i=0;i<10;i++){
-   books[i].showInfo();
-  }
-  return 0;
+    return 0;
 }
