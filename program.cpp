@@ -177,6 +177,12 @@ using namespace std;
         this->author=author;
       }
 
+      void setBookInfo(string title,string author,int pusblishYear){
+        this->title=title;
+        this->publishYear=pusblishYear;
+        this->author=author;
+      }
+
       void bookInfo(){
         cout<<"title:"<<title<<endl;
         cout<<"author:"<<author<<endl;
@@ -292,7 +298,10 @@ int main(){
  Libarary l1;
  
 l1.setMemberInfo("ahmad","Islamabad","student");
+l1.setBookInfo("the hunt","ali",2017);
 cout<<l1.checkStatus();
+
+l1.statusStudent();
 
 
 
