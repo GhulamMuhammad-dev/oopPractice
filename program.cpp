@@ -159,162 +159,217 @@
 //   return 0;
 // }
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+
+//  class Books{
+//       private:
+//       string title;
+//       string author;
+//       int publishYear;
+//       public:
+//       Books(){};
+//       Books(string title,string author,int pusblishYear){
+//         this->title=title;
+//         this->publishYear=pusblishYear;
+//         this->author=author;
+//       }
+
+//       void setBookInfo(string title,string author,int pusblishYear){
+//         this->title=title;
+//         this->publishYear=pusblishYear;
+//         this->author=author;
+//       }
+
+//       void bookInfo(){
+//         cout<<"title:"<<title<<endl;
+//         cout<<"author:"<<author<<endl;
+//         cout<<"publishYear:"<<publishYear<<endl;
+//       }
+
+//  };
+
+// class Transaction:public Books{
+   
+//    protected:
+//    void borrowBook(){
+//     cout<<"You borrow the book "<<endl;
+//      bookInfo();
+//    }
+//    void returnBook(){
+//     cout<<"You return the book "<<endl;
+//      bookInfo();
+//    }
+//    void giveBook(){
+//     cout<<"You give the book "<<endl;
+//      bookInfo();
+//    }
+//    void takeBook(){
+//     cout<<"You take the book "<<endl;
+//      bookInfo();
+//    }
+   
+// };
+
+
+// class Member:public Transaction{
+//         private:
+//         string name;
+//         string address;
+//         string status;
+//         public:
+        
+//         Member(){};
+//           Member(string name,string address,string status){
+//           this->name=name;
+//           this->address=address;
+//           this->status=status;
+//       };
+
+//           void setMemberInfo(string name,string address,string status){
+//           this->name=name;
+//           this->address=address;
+//           this->status=status;
+//       };
+
+//       string checkStatus(){
+//         return status=="student"?"std":"work";
+//       }
+
+//       void statusStudent(){
+//         char option;
+//         cout<<"You want to borrow the book or return the book b/r"<<endl;
+//         cin>>option;
+//         if(option=='b'){
+//           borrowBook();
+//         }
+//         else if(option=='r'){
+//           returnBook();
+//         }
+//       }
+
+//  void statusWorker(){
+//         char option;
+//         cout<<"You want to give the book or take the book g/t"<<endl;
+//         cin>>option;
+//         if(option=='g'){
+//           giveBook();
+//         }
+//         else if(option=='t'){
+//          takeBook();
+//         }
+//       }
+
+
+
+
+
+// };
+
+
+
+//  class Libarary:public Member{
+//   private:
+//   string name;
+//   string address;
+//   public:
+//   Libarary(){};
+//   Libarary(string na,string add){
+//     name=na;
+//     address=add;
+//   }
+   
+//    void showInfo(){
+//     cout<<"The name of libraray is "<<name<<" The address is "<<address<<endl;
+//    }
+
+
+//  };
+
+
+
+
+
+
+// int main(){
+
+//  Libarary l1;
+ 
+// l1.setMemberInfo("ahmad","Islamabad","student");
+// l1.setBookInfo("the hunt","ali",2017);
+// cout<<l1.checkStatus();
+
+// l1.statusStudent();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   return 0;
+// }
+
+
 #include<iostream>
 #include<string>
 using namespace std;
 
+class Books{
+    private:
+    string title;
+    int publishYear;
+    int count;
+    public:
+    Books(){
+      title="none";
+      publishYear=0;
+      count=0;
+    }
+    Books(string title,int publishYear){
+      count++;
+      this->title=title;
+      this->publishYear=publishYear;
+    }
 
- class Books{
-      private:
-      string title;
-      string author;
-      int publishYear;
-      public:
-      Books(){};
-      Books(string title,string author,int pusblishYear){
-        this->title=title;
-        this->publishYear=pusblishYear;
-        this->author=author;
-      }
-
-      void setBookInfo(string title,string author,int pusblishYear){
-        this->title=title;
-        this->publishYear=pusblishYear;
-        this->author=author;
-      }
-
-      void bookInfo(){
-        cout<<"title:"<<title<<endl;
-        cout<<"author:"<<author<<endl;
-        cout<<"publishYear:"<<publishYear<<endl;
-      }
-
- };
-
-class Transaction:public Books{
-   
-   protected:
-   void borrowBook(){
-    cout<<"You borrow the book "<<endl;
-     bookInfo();
-   }
-   void returnBook(){
-    cout<<"You return the book "<<endl;
-     bookInfo();
-   }
-   void giveBook(){
-    cout<<"You give the book "<<endl;
-     bookInfo();
-   }
-   void takeBook(){
-    cout<<"You take the book "<<endl;
-     bookInfo();
-   }
-   
-};
-
-
-class Member:public Transaction{
-        private:
-        string name;
-        string address;
-        string status;
-        public:
-        
-        Member(){};
-          Member(string name,string address,string status){
-          this->name=name;
-          this->address=address;
-          this->status=status;
-      };
-
-          void setMemberInfo(string name,string address,string status){
-          this->name=name;
-          this->address=address;
-          this->status=status;
-      };
-
-      string checkStatus(){
-        return status=="student"?"std":"work";
-      }
-
-      void statusStudent(){
-        char option;
-        cout<<"You want to borrow the book or return the book b/r"<<endl;
-        cin>>option;
-        if(option=='b'){
-          borrowBook();
-        }
-        else if(option=='r'){
-          returnBook();
-        }
-      }
-
- void statusWorker(){
-        char option;
-        cout<<"You want to give the book or take the book g/t"<<endl;
-        cin>>option;
-        if(option=='g'){
-          giveBook();
-        }
-        else if(option=='t'){
-         takeBook();
-        }
-      }
-
-
-
-
-
-};
-
-
-
- class Libarary:public Member{
-  private:
-  string name;
-  string address;
-  public:
-  Libarary(){};
-  Libarary(string na,string add){
-    name=na;
-    address=add;
-  }
-   
    void showInfo(){
-    cout<<"The name of libraray is "<<name<<" The address is "<<address<<endl;
+    cout<<"index:"<<count<<endl;
+    cout<<"title:"<<title<<endl;
+    cout<<"publishYear:"<<publishYear<<endl;
    }
 
 
- };
 
 
 
-
-
+};
 
 int main(){
 
- Libarary l1;
- 
-l1.setMemberInfo("ahmad","Islamabad","student");
-l1.setBookInfo("the hunt","ali",2017);
-cout<<l1.checkStatus();
+  Books books[10];
+  cout<<"Enter the info for the books"<<endl;
+  string title;
+  int publishYear;
 
-l1.statusStudent();
-
-
-
-
-
-
+  for(int i=0;i<10;i++){
+    cout<<"Next book"<<endl;
+    cin>>title;
+    cin>>publishYear;
+    books[i]={title,publishYear};
+  }
 
 
-
-
-
-
-
-
+  for(int i=0;i<10;i++){
+   books[i].showInfo();
+  }
   return 0;
 }
