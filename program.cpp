@@ -163,24 +163,6 @@
 #include<string>
 using namespace std;
 
- class Libarary{
-  private:
-  string name;
-  string address;
-  public:
-  Libarary(){};
-  Libarary(string na,string add){
-    name=na;
-    address=add;
-  }
-   
-   void showInfo(){
-    cout<<"The name of libraray is "<<name<<" The address is "<<address<<endl;
-   }
-
-
- };
-
 
  class Books{
       private:
@@ -240,6 +222,12 @@ class Member:public Transaction{
           this->status=status;
       };
 
+          void setMemberInfo(string name,string address,string status){
+          this->name=name;
+          this->address=address;
+          this->status=status;
+      };
+
       string checkStatus(){
         return status=="student"?"std":"work";
       }
@@ -276,7 +264,23 @@ class Member:public Transaction{
 
 
 
+ class Libarary:public Member{
+  private:
+  string name;
+  string address;
+  public:
+  Libarary(){};
+  Libarary(string na,string add){
+    name=na;
+    address=add;
+  }
+   
+   void showInfo(){
+    cout<<"The name of libraray is "<<name<<" The address is "<<address<<endl;
+   }
 
+
+ };
 
 
 
@@ -284,5 +288,24 @@ class Member:public Transaction{
 
 
 int main(){
+
+ Libarary l1;
+ 
+l1.setMemberInfo("ahmad","Islamabad","student");
+cout<<l1.checkStatus();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return 0;
 }
