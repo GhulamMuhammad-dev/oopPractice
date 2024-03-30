@@ -1,9 +1,10 @@
 #include<iostream>
 #include<string>
+#include<ctime>
 using namespace std;
 
 class GameArea{
-     private:
+     protected:
      char Area[10][10];
      public:
        GameArea(){
@@ -22,9 +23,15 @@ class GameArea{
         }
        }
 
-     protected:
 
+};
 
+class Star: public GameArea{
+
+      protected:
+     const char star='*';
+
+     public:
 
 
 
@@ -35,14 +42,41 @@ class GameArea{
 
 
 
+int RandomNumber(){
+    srand(static_cast<unsigned>( time(0)));
+    int randomNum=rand()%7;
 
+    return randomNum;
+
+}
 
 
 
 
 
 int main(){
-     GameArea g1;
+    //  GameArea g1;
+
+    do{
+     char option;
+     cout<<"Enter a to generate random number"<<endl;
+     cin>>option;
+     if(option=='a'){
+        cout<<RandomNumber()<<endl;
+     }
+     else{
+        break;
+     }
+
+
+
+
+
+
+
+
+    }while(true);
+
 
 
 
