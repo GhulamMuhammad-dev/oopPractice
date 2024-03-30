@@ -30,10 +30,17 @@ class Star: public GameArea{
 
       protected:
      const char star='*';
-     friend int RandomNumber();
 
      public:
 
+     int RandomNumber(){
+    srand(static_cast<unsigned>( time(0)));
+    int randomNum=rand()%7;
+
+    return randomNum;
+
+}
+     
      void goRandom(){
             do{
      char option;
@@ -58,16 +65,6 @@ class Star: public GameArea{
 
 
 };
-
-
-
-int RandomNumber(){
-    srand(static_cast<unsigned>( time(0)));
-    int randomNum=rand()%7;
-
-    return randomNum;
-
-}
 
 
 
