@@ -30,8 +30,27 @@ class Star: public GameArea{
 
       protected:
      const char star='*';
+     friend int RandomNumber();
 
      public:
+
+     void goRandom(){
+            do{
+     char option;
+     cout<<"Enter a to generate random number"<<endl;
+     cin>>option;
+     if(option=='a'){
+        cout<<RandomNumber()<<endl;
+     }
+     else{
+        break;
+     }
+
+
+
+    }while(true);
+
+     }
 
 
 
@@ -56,26 +75,9 @@ int RandomNumber(){
 
 int main(){
     //  GameArea g1;
-
-    do{
-     char option;
-     cout<<"Enter a to generate random number"<<endl;
-     cin>>option;
-     if(option=='a'){
-        cout<<RandomNumber()<<endl;
-     }
-     else{
-        break;
-     }
-
-
-
-
-
-
-
-
-    }while(true);
+    Star s1;
+    s1.goRandom();
+   
 
 
 
