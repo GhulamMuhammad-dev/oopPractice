@@ -1,7 +1,13 @@
 #include<iostream>
 #include<string>
 #include<ctime>
+#include<windows.h>
+#include<cstdlib>
 using namespace std;
+
+void clearScreen(){
+    system("cls");
+}
 
 class GameArea{
      protected:
@@ -10,7 +16,7 @@ class GameArea{
        GameArea(){
         for(int i=0;i<10;i++){
             for(int j=0;j<10;j++){
-                Area[i][j]=' ';
+                Area[i][j]='_';
             }
         }
 
@@ -32,22 +38,21 @@ class Star: public GameArea{
      const char star='*';
 
      public:
-
-     int RandomNumber(){
-    srand(static_cast<unsigned>( time(0)));
-    int randomNum=rand()%7;
-
-    return randomNum;
-
-}
      
      void goRandom(){
+
             do{
+
+    srand(static_cast<unsigned>( time(0)));
+    int randomNum=rand()%7;
      char option;
      cout<<"Enter a to generate random number"<<endl;
      cin>>option;
+
      if(option=='a'){
-        cout<<RandomNumber()<<endl;
+         clearScreen();
+        cout<<randomNum<<endl;
+        GameArea g1;
      }
      else{
         break;
@@ -71,7 +76,6 @@ class Star: public GameArea{
 
 
 int main(){
-    //  GameArea g1;
     Star s1;
     s1.goRandom();
    
