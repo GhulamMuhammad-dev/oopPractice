@@ -96,31 +96,38 @@ void showArea(char Area[][10]){
         }
 }
 
+
+void updateArea(char Area[][10],int ranNum){
+     for(int i=0;i<10;i++){
+            for(int j=0;j<10;j++){
+                if(j==ranNum && i==ranNum){
+                    Area[i][j]='*';
+                }
+                else{
+               Area[i][j]='_';
+                }
+            }
+            
+        }
+}
+
+
+
 int main(){
 
     char Area[10][10];
-     
-
-
-
-
-       for(int i=0;i<10;i++){
-            for(int j=0;j<10;j++){
-                Area[i][j]='_';
-            }
-        }
-
-
-     
+     char option;
 
 
       do{
-        char option;
+      srand(static_cast<unsigned>( time(0)));
+      int randomNum=rand()%7;
          cout<<"Enter a to play"<<endl;
          cin>>option;
         if(option=='a'){
             system("cls");
-          showArea(Area);
+              showArea(Area);
+            updateArea(Area,randomNum);
         }
         else{
             break;
