@@ -156,9 +156,12 @@ using namespace std;
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <windows.h> // for Sleep()
+#include <conio.h> // for _getch() on Windows
 
 using namespace std;
+
+const int GRID_WIDTH = 10;
+const int GRID_HEIGHT = 10;
 
 class Star {
 private:
@@ -167,18 +170,18 @@ private:
 
 public:
     Star() {
-        x = rand() % 80; // Random initial x position
-        y = 0; // Start from the top
+        x = rand() % GRID_WIDTH;
+        y = rand() % GRID_HEIGHT;
         symbol = '*';
     }
 
-    void move() {
+    void moveDown() {
         y++; // Move the star down
 
-        // If the star reaches the bottom of the screen, reset its position to the top
-        if (y >= 24) {
+        // If the star reaches the bottom of the grid, reset its position to the top
+        if (y >= GRID_HEIGHT) {
             y = 0;
-            x = rand() % 80;
+            x = rand() % GRID_WIDTH;
         }
     }
 
@@ -193,7 +196,7 @@ int main() {
     srand(time(NULL)); // Seed the random number generator with current time
 
     const int FPS = 30; // Frames per second
-    const int NUM_STARS = 10; // Number of stars
+    const int NUM_STARS = 5; // Number of stars
 
     Star stars[NUM_STARS]; // Array to hold the stars
 
@@ -202,8 +205,18 @@ int main() {
 
         // Move and draw each star
         for (int i = 0; i < NUM_STARS; ++i) {
-            stars[i].move();
             stars[i].draw();
+        }
+
+        // Wait for user input
+        if (_kbhit()) { // Check if a key has been pressed
+            char key = _getch(); // Get the pressed key
+
+            if (key == 'a') { // If the key is 'a', move all stars downwards
+                for (int i = 0; i < NUM_STARS; ++i) {
+                    stars[i].moveDown();
+                }
+            }
         }
 
         cout << flush; // Flush the output buffer
