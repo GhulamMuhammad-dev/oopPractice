@@ -152,30 +152,63 @@ using namespace std;
 //     return 0;
 // }
 
-void fillAndAccessArray(int arr[], int size) {
-    // Fill the array with some values
-    for (int i = 0; i < size; ++i) {
-        arr[i] = i * 2; // Just an example, you can put any values here
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <windows.h> // for Sleep()
+
+using namespace std;
+
+class Star {
+private:
+    int x, y; // Position of the star
+    char symbol; // Symbol representing the star
+
+public:
+    Star() {
+        x = rand() % 80; // Random initial x position
+        y = 0; // Start from the top
+        symbol = '*';
     }
 
-    // Access the values of the array and print them
-    std::cout << "Values of the array inside the function:" << std::endl;
-    for (int i = 0; i < size; ++i) {
-        std::cout << "arr[" << i << "] = " << arr[i] << std::endl;
+    void move() {
+        y++; // Move the star down
+
+        // If the star reaches the bottom of the screen, reset its position to the top
+        if (y >= 24) {
+            y = 0;
+            x = rand() % 80;
+        }
     }
-}
+
+    void draw() {
+        // Move cursor to position (x, y) and print the star symbol
+        cout << "\033[" << y + 1 << ";" << x + 1 << "H"; // ANSI escape sequence for moving cursor
+        cout << symbol;
+    }
+};
 
 int main() {
-    const int size = 5;
-    int myArray[size];
+    srand(time(NULL)); // Seed the random number generator with current time
 
-    // Call the function and pass the array and its size
-    fillAndAccessArray(myArray, size);
+    const int FPS = 30; // Frames per second
+    const int NUM_STARS = 10; // Number of stars
 
-    // Accessing the array values in the main function
-    std::cout << "\nValues of the array in the main function:" << std::endl;
-    for (int i = 0; i < size; ++i) {
-        std::cout << "myArray[" << i << "] = " << myArray[i] << std::endl;
+    Star stars[NUM_STARS]; // Array to hold the stars
+
+    while (true) {
+        system("cls"); // Clear the console (for Windows, use "cls" instead of "clear")
+
+        // Move and draw each star
+        for (int i = 0; i < NUM_STARS; ++i) {
+            stars[i].move();
+            stars[i].draw();
+        }
+
+        cout << flush; // Flush the output buffer
+
+        Sleep(1000 / FPS); // Pause to achieve desired FPS
     }
 
     return 0;
