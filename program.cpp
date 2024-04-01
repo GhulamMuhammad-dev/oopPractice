@@ -152,7 +152,6 @@ using namespace std;
 //     return 0;
 // }
 
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -175,14 +174,16 @@ public:
         symbol = '*';
     }
 
-    void moveDown() {
+    bool moveDown() {
         y++; // Move the star down
 
         // If the star reaches the bottom of the grid, reset its position to the top
         if (y >= GRID_HEIGHT) {
             y = 0;
             x = rand() % GRID_WIDTH;
+            return true; // Star has reached the end of the column
         }
+        return false; // Star has not reached the end of the column
     }
 
     void draw() {
@@ -190,6 +191,8 @@ public:
         cout << "\033[" << y + 1 << ";" << x + 1 << "H"; // ANSI escape sequence for moving cursor
         cout << symbol;
     }
+
+    int getX() const { return x; } // Getter method for x-coordinate
 };
 
 int main() {
@@ -199,6 +202,7 @@ int main() {
     const int NUM_STARS = 5; // Number of stars
 
     Star stars[NUM_STARS]; // Array to hold the stars
+    int columnCounters[GRID_WIDTH] = {0}; // Array to hold counters for each column
 
     while (true) {
         system("cls"); // Clear the console (for Windows, use "cls" instead of "clear")
@@ -206,7 +210,18 @@ int main() {
         // Move and draw each star
         for (int i = 0; i < NUM_STARS; ++i) {
             stars[i].draw();
+            if (stars[i].moveDown()) {
+                // Increment the counter for the column where the star has reached the end
+                columnCounters[stars[i].getX()]++;
+            }
         }
+
+        // Display column counters
+        cout << "Column Counters: ";
+        for (int i = 0; i < GRID_WIDTH; ++i) {
+            cout << columnCounters[i] << " ";
+        }
+        cout << endl;
 
         // Wait for user input
         if (_kbhit()) { // Check if a key has been pressed
@@ -226,3 +241,5 @@ int main() {
 
     return 0;
 }
+
+
