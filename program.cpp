@@ -174,16 +174,14 @@ public:
         symbol = '*';
     }
 
-    bool moveDown() {
+    void moveDown() {
         y++; // Move the star down
 
         // If the star reaches the bottom of the grid, reset its position to the top
         if (y >= GRID_HEIGHT) {
             y = 0;
             x = rand() % GRID_WIDTH;
-            return true; // Star has reached the end of the column
         }
-        return false; // Star has not reached the end of the column
     }
 
     void draw() {
@@ -193,6 +191,7 @@ public:
     }
 
     int getX() const { return x; } // Getter method for x-coordinate
+    int getY() const { return y; } // Getter method for y-coordinate
 };
 
 int main() {
@@ -210,10 +209,6 @@ int main() {
         // Move and draw each star
         for (int i = 0; i < NUM_STARS; ++i) {
             stars[i].draw();
-            if (stars[i].moveDown()) {
-                // Increment the counter for the column where the star has reached the end
-                columnCounters[stars[i].getX()]++;
-            }
         }
 
         // Display column counters
@@ -230,6 +225,9 @@ int main() {
             if (key == 'a') { // If the key is 'a', move all stars downwards
                 for (int i = 0; i < NUM_STARS; ++i) {
                     stars[i].moveDown();
+                    if (stars[i].getY() == 0) { // Check if the star reaches the bottom of the grid
+                        columnCounters[stars[i].getX()]++; // Increment the counter for the corresponding column
+                    }
                 }
             }
         }
@@ -241,5 +239,6 @@ int main() {
 
     return 0;
 }
+
 
 
