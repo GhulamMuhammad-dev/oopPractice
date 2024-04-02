@@ -247,9 +247,9 @@ using namespace std;
 
 using namespace std;
 
-int numberIncrement(int &num){
-    num++;
-    return num;
+int numberIncrement(int *num){
+    *num=*num+1;
+    return *num;
 }
 
 
@@ -264,7 +264,7 @@ int main(){
    char key=_getch();
    if(key=='a'){
     system("cls");
-    numberIncrement(number);
+    numberIncrement(&number);
     cout<<number<<endl;
    }
    else{
