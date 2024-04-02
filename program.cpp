@@ -247,7 +247,7 @@ using namespace std;
 
 using namespace std;
 
-int numberIncrement(int num){
+int numberIncrement(int &num){
     num++;
     return num;
 }
