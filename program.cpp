@@ -250,8 +250,11 @@ using namespace std;
 int numberIncrement(int *num){
     int *value=new int;
     cout<<"ENTER the number to add"<<endl;
-    *value=_getch();
+    cout<<value<<endl;
+    cin>>*value;
     *num=*num+*value;
+    delete value;
+    cout<<*value;
     return *num;
 }
 
