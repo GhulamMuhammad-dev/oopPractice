@@ -1,9 +1,9 @@
-#include<iostream>
-#include<string>
-#include<ctime>
-#include<windows.h>
-#include<cstdlib>
-using namespace std;
+// #include<iostream>
+// #include<string>
+// #include<ctime>
+// #include<windows.h>
+// #include<cstdlib>
+// using namespace std;
 
 // void clearScreen(){
 //     system("cls");
@@ -152,93 +152,93 @@ using namespace std;
 //     return 0;
 // }
 
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <conio.h> // for _getch() on Windows
+// #include <iostream>
+// #include <cstdlib>
+// #include <ctime>
+// #include <conio.h> // for _getch() on Windows
 
-using namespace std;
+// using namespace std;
 
-const int GRID_WIDTH = 10;
-const int GRID_HEIGHT = 10;
+// const int GRID_WIDTH = 10;
+// const int GRID_HEIGHT = 10;
 
-class Star {
-private:
-    int x, y; // Position of the star
-    char symbol; // Symbol representing the star
+// class Star {
+// private:
+//     int x, y; // Position of the star
+//     char symbol; // Symbol representing the star
 
-public:
-    Star() {
-        x = rand() % GRID_WIDTH;
-        y = rand() % GRID_HEIGHT;
-        symbol = '*';
-    }
+// public:
+//     Star() {
+//         x = rand() % GRID_WIDTH;
+//         y = rand() % GRID_HEIGHT;
+//         symbol = '*';
+//     }
 
-    void moveDown() {
-        y++; // Move the star down
+//     void moveDown() {
+//         y++; // Move the star down
 
-        // If the star reaches the bottom of the grid, reset its position to the top
-        if (y >= GRID_HEIGHT) {
-            y = 0;
-            x = rand() % GRID_WIDTH;
-        }
-    }
+//         // If the star reaches the bottom of the grid, reset its position to the top
+//         if (y >= GRID_HEIGHT) {
+//             y = 0;
+//             x = rand() % GRID_WIDTH;
+//         }
+//     }
 
-    void draw() {
-        // Move cursor to position (x, y) and print the star symbol
-        cout << "\033[" << y + 1 << ";" << x + 1 << "H"; // ANSI escape sequence for moving cursor
-        cout << symbol;
-    }
+//     void draw() {
+//         // Move cursor to position (x, y) and print the star symbol
+//         cout << "\033[" << y + 1 << ";" << x + 1 << "H"; // ANSI escape sequence for moving cursor
+//         cout << symbol;
+//     }
 
-    int getX() const { return x; } // Getter method for x-coordinate
-    int getY() const { return y; } // Getter method for y-coordinate
-};
+//     int getX() const { return x; } // Getter method for x-coordinate
+//     int getY() const { return y; } // Getter method for y-coordinate
+// };
 
-int main() {
-    srand(time(NULL)); // Seed the random number generator with current time
+// int main() {
+//     srand(time(NULL)); // Seed the random number generator with current time
 
-    const int FPS = 30; // Frames per second
-    const int NUM_STARS = 5; // Number of stars
+//     const int FPS = 30; // Frames per second
+//     const int NUM_STARS = 5; // Number of stars
 
-    Star stars[NUM_STARS]; // Array to hold the stars
-    int columnCounters[GRID_WIDTH] = {0}; // Array to hold counters for each column
+//     Star stars[NUM_STARS]; // Array to hold the stars
+//     int columnCounters[GRID_WIDTH] = {0}; // Array to hold counters for each column
 
-    while (true) {
-        system("cls"); // Clear the console (for Windows, use "cls" instead of "clear")
+//     while (true) {
+//         system("cls"); // Clear the console (for Windows, use "cls" instead of "clear")
 
-        // Move and draw each star
-        for (int i = 0; i < NUM_STARS; ++i) {
-            stars[i].draw();
-        }
+//         // Move and draw each star
+//         for (int i = 0; i < NUM_STARS; ++i) {
+//             stars[i].draw();
+//         }
 
-        // Display column counters
-        cout << "Column Counters: ";
-        for (int i = 0; i < GRID_WIDTH; ++i) {
-            cout << columnCounters[i] << " ";
-        }
-        cout << endl;
+//         // Display column counters
+//         cout << "Column Counters: ";
+//         for (int i = 0; i < GRID_WIDTH; ++i) {
+//             cout << columnCounters[i] << " ";
+//         }
+//         cout << endl;
 
-        // Wait for user input
-        if (_kbhit()) { // Check if a key has been pressed
-            char key = _getch(); // Get the pressed key
+//         // Wait for user input
+//         if (_kbhit()) { // Check if a key has been pressed
+//             char key = _getch(); // Get the pressed key
 
-            if (key == 'a') { // If the key is 'a', move all stars downwards
-                for (int i = 0; i < NUM_STARS; ++i) {
-                    stars[i].moveDown();
-                    if (stars[i].getY() == 0) { // Check if the star reaches the bottom of the grid
-                        columnCounters[stars[i].getX()]++; // Increment the counter for the corresponding column
-                    }
-                }
-            }
-        }
+//             if (key == 'a') { // If the key is 'a', move all stars downwards
+//                 for (int i = 0; i < NUM_STARS; ++i) {
+//                     stars[i].moveDown();
+//                     if (stars[i].getY() == 0) { // Check if the star reaches the bottom of the grid
+//                         columnCounters[stars[i].getX()]++; // Increment the counter for the corresponding column
+//                     }
+//                 }
+//             }
+//         }
 
-        cout << flush; // Flush the output buffer
+//         cout << flush; // Flush the output buffer
 
-        Sleep(1000 / FPS); // Pause to achieve desired FPS
-    }
+//         Sleep(1000 / FPS); // Pause to achieve desired FPS
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 
