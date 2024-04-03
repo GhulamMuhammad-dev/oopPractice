@@ -248,7 +248,10 @@ using namespace std;
 using namespace std;
 
 int numberIncrement(int *num){
-    *num=*num+1;
+    int *value=new int;
+    cout<<"ENTER the number to add"<<endl;
+    *value=_getch();
+    *num=*num+*value;
     return *num;
 }
 
