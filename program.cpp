@@ -8,10 +8,10 @@ using namespace std;
 
 class Employee{
     private:
-    string name;
-    int salary;
-    string status;
-    bool active;
+    mutable string name;
+    mutable int salary;
+    mutable string status;
+    mutable bool active;
 
 
 
@@ -20,14 +20,14 @@ class Employee{
     Employee(){};
 
 
-     void setEmployInfo(string name,int salary,string status,bool active){
+     void setEmployInfo (string name,int salary,string status,bool active) const{
         this->name=name;
         this->salary=salary;
         this->status=status;
         this->active=active;
     }
 
-    void showEmploysInfo(){
+    void showEmploysInfo() const{
      
      cout<<"Name: "<<name<<endl;
      cout<<"salary: "<<salary<<endl;
@@ -64,7 +64,7 @@ int main()
     ios_base::sync_with_stdio(false); 
  
 
-   Employee employees[4];
+   const Employee employees[4];
    string empName;
    int empSalary;
    string empStatus;
