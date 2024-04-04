@@ -291,6 +291,7 @@
 #include<iostream>
 #include<stdlib.h>
 #include<iomanip>
+#include<conio.h>
 
 using namespace std;
 void fun() 
@@ -299,26 +300,100 @@ void fun()
     { 
     } 
 } 
+
+int numberIncrement(int *num){
+    int *value=new int;
+    cout<<"ENTER the number to add"<<endl;
+    cout<<value<<endl;
+    cin>>*value;
+    *num=*num+*value;
+    delete value;
+    cout<<*value;
+    return *num;
+}
  
 int main() 
 { 
-    /* Time function returns the time since the 
-        Epoch(jan 1 1970). Returned time is in seconds. */
+
     time_t start, end; 
- 
-    /* You can call it like this : start = time(NULL); 
-    in both the way start contain total time in seconds 
-    since the Epoch. */
     time(&start); 
  
-    // unsync the I/O of C and C++. 
     ios_base::sync_with_stdio(false); 
  
+
+
+   int number=0;
+   
+
+   do{
+   cout<<"click a to increase number"<<endl;
+   if(_kbhit){
+   char key=_getch();
+   if(key=='a'){
+    system("cls");
+    numberIncrement(&number);
+    cout<<number<<endl;
+   }
+   else{
+    break;
+   }
+   }
+
+
+   }while(true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     fun(); 
- 
-    // Recording end time. 
+
     time(&end); 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Calculating total time taken by the program. 
     double time_taken = double(end - start); 
     cout << "Time taken by program is : " << fixed 
