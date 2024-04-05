@@ -63,8 +63,10 @@ int main()
  
     ios_base::sync_with_stdio(false); 
  
+     int totalEmployee;
+    cin>>totalEmployee;
 
-   const Employee employees[4];
+    const Employee *employees=new Employee[totalEmployee];
    string empName;
    int empSalary;
    string empStatus;
