@@ -67,13 +67,13 @@ int main()
      cout<<"Enter the number of employees"<<endl;
     cin>>totalEmployee;
 
-    const Employee *employees=new Employee[totalEmployee-1];
+    const Employee *employees=new Employee[totalEmployee];
    string empName;
    int empSalary;
    string empStatus;
    bool empisActive;
 
-   for(int i=0;i<4;i++){
+   for(int i=0;i<totalEmployee;i++){
     cout<<"Enter the name of employee "<<i+1<<endl;
     cin>>empName;
     cout<<"Enter the salary of employee "<<i+1<<endl;
@@ -85,7 +85,7 @@ int main()
     employees[i].setEmployInfo(empName,empSalary,empStatus,empisActive);
    }
 
-   for(int i=0;i<4;i++){
+   for(int i=0;i<totalEmployee;i++){
     employees[i].showEmploysInfo();
    }
 
