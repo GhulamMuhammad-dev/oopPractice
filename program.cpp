@@ -64,9 +64,10 @@ int main()
     ios_base::sync_with_stdio(false); 
  
      int totalEmployee;
+     cout<<"Enter the number of employees"<<endl;
     cin>>totalEmployee;
 
-    const Employee *employees=new Employee[totalEmployee];
+    const Employee *employees=new Employee[totalEmployee-1];
    string empName;
    int empSalary;
    string empStatus;
