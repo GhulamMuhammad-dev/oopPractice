@@ -190,7 +190,7 @@ public:
     }
 
     void displayBooks() {
-        cout << "id: " << bookID+1 << endl;
+        cout << "id: " << bookID << endl;
         cout << "name: " << name << endl;
         cout << "author: " << author << endl;
         if (borrowStatus) {
@@ -261,10 +261,10 @@ do{
             int bookId;
             cout << "Enter the id of book" << endl;
             cin >> bookId;
-            books[bookId].displayBooks();
-            books[bookId].acceptBook();
+            books[bookId-1].displayBooks();
+            books[bookId-1].acceptBook();
             cout << "You borrow it" << endl;
-            books[bookId].allocateBook(0);
+            books[bookId-1].allocateBook(0);
 
 
             for (int i = 0; i < totalBooks; i++) {
@@ -277,10 +277,10 @@ do{
             int bookId;
             cout << "Enter the id of book" << endl;
             cin >> bookId;
-            books[bookId].displayBooks();
-            books[bookId].acceptBook();
-            cout << "You rteun it" << endl;
-            books[bookId].allocateBook(1);
+            books[bookId-1].displayBooks();
+            books[bookId-1].acceptBook();
+            cout << "You return it" << endl;
+            books[bookId-1].allocateBook(1);
 
             for (int i = 0; i < totalBooks; i++) {
                 books[i].displayBooks();
