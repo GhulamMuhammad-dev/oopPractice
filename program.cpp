@@ -154,6 +154,9 @@
 
 
 
+
+
+
 #include <iostream>
 #include<string>
 using namespace std;
@@ -161,7 +164,7 @@ using namespace std;
 
 class Libarary {
 private:
-    int bookID;
+    mutable int bookID;
     string name;
     string author;
     bool borrowStatus;
@@ -223,13 +226,13 @@ int main()
 {
 
 
-    const int totalBooks = 2;
+    int totalBooks;
+    cout<<"Enter the number of books you want to enter"<<endl;
+     Libarary *books=new Libarary[totalBooks];
     int id;
     string name;
     string author;
     bool borrowStatus;
-
-    Libarary books[totalBooks];
 
     for (int i = 0; i < totalBooks; i++) {
         cout << "Enter the id:" << endl;
