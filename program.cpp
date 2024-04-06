@@ -228,6 +228,7 @@ int main()
 
     int totalBooks;
     cout<<"Enter the number of books you want to enter"<<endl;
+    cin>>totalBooks;
      Libarary *books=new Libarary[totalBooks];
     int id;
     string name;
@@ -255,6 +256,7 @@ int main()
         char option;
         cout << "You want to borrow book or retuen the book b/r" << endl;
         cin >> option;
+        do{
         if (option == 'b') {
             int bookId;
             cout << "Enter the id of book" << endl;
@@ -285,5 +287,16 @@ int main()
             }
         }
 
+        else{
+            break;
+        }
 
-    }
+        }while(true);
+        
+
+
+        return 0;
+
+
+    
+}
