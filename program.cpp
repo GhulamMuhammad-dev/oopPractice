@@ -252,11 +252,11 @@ int main()
         for (int i = 0; i < totalBooks; i++) {
             books[i].displayBooks();
         }
-
+do{
         char option;
         cout << "You want to borrow book or retuen the book b/r" << endl;
         cin >> option;
-        do{
+        
         if (option == 'b') {
             int bookId;
             cout << "Enter the id of book" << endl;
