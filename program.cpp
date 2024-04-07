@@ -304,56 +304,52 @@
 
 
 
-#include<iostream>
-#include<string>
+#include <iostream>
 
-using namespace std;
+// Base class Player
+class Player {
+protected:
+    int posX;
+    int posY;
 
-class House{
-    private:
-    int totalArea;
-    int totalRooms;
-    int totalWashRooms;
-    int totalKitchens;
-    public:
-    House(){};
-    House(int totalArea, int totalRooms, int totalWashRooms,int totalKitchens){
-        this->totalArea=totalArea;
-        this->totalRooms=totalRooms;
-        this->totalWashRooms=totalWashRooms;
-        this->totalKitchens=totalKitchens;
-    }
-    protected:
-     void getTotalArea(){
-       cout<<"The total area of house is "<<totalArea<<endl;
-    }
+public:
+    Player(int x = 0, int y = 0) : posX(x), posY(y) {}
 
-};
-
-class Room:public House{
-    public:
-    void showHouseArea(){
-        getTotalArea();
+    void move(int x, int y) {
+        posX += x;
+        posY += y;
+        std::cout << "Player moved to position (" << posX << ", " << posY << ")\n";
     }
 };
 
+// Subclass Runner inheriting from Player
+class Runner : public Player {
+public:
+    Runner(int x = 0, int y = 0) : Player(x, y) {}
 
+    void run(int distance) {
+        move(distance, 0); // Calls base class move function
+        std::cout << "Runner ran " << distance << " units\n";
+    }
+};
 
+// Subclass Jumper inheriting from Player
+class Jumper : public Player {
+public:
+    Jumper(int x = 0, int y = 0) : Player(x, y) {}
 
+    void jump(int height) {
+        move(0, height); // Calls base class move function
+        std::cout << "Jumper jumped " << height << " units\n";
+    }
+};
 
+int main() {
+    Runner runner;
+    Jumper jumper;
 
-
-
-int main(){
-
-   House h1(220,5,2,1);
-   Room r1;
-   r1.showHouseArea();
-
-
-
-
-
+    runner.run(5);
+    jumper.jump(3);
 
     return 0;
 }
