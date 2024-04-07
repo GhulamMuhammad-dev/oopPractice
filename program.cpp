@@ -323,16 +323,19 @@ class House{
         this->totalWashRooms=totalWashRooms;
         this->totalKitchens=totalKitchens;
     }
-
-
-
-
-
-
+    protected:
+     void getTotalArea(){
+       cout<<"The total area of house is "<<totalArea<<endl;
+    }
 
 };
 
-
+class Room:public House{
+    public:
+    void showHouseArea(){
+        getTotalArea();
+    }
+};
 
 
 
@@ -343,6 +346,9 @@ class House{
 
 int main(){
 
+   House h1(220,5,2,1);
+   Room r1;
+   r1.showHouseArea();
 
 
 
