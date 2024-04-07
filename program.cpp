@@ -157,62 +157,172 @@
 
 
 
-#include <iostream>
-#include<string>
-using namespace std;
+// #include <iostream>
+// #include<string>
+// using namespace std;
 
 
-class Libarary {
-private:
-    mutable int bookID;
-    string name;
-    string author;
-    bool borrowStatus;
-public:
-    Libarary() {};
-    Libarary(int id,string name,string author,bool borrowStatus){
-        this->bookID = id;
-        this->name = name;
-        this->author = author;
-        this->borrowStatus = borrowStatus;
-    };
+// class Libarary {
+// private:
+//     mutable int bookID;
+//     string name;
+//     string author;
+//     bool borrowStatus;
+// public:
+//     Libarary() {};
+//     Libarary(int id,string name,string author,bool borrowStatus){
+//         this->bookID = id;
+//         this->name = name;
+//         this->author = author;
+//         this->borrowStatus = borrowStatus;
+//     };
 
-    void setData(int id, string name, string author, bool borrowStatus) {
-        this->bookID = id;
-        this->name = name;
-        this->author = author;
-        this->borrowStatus = borrowStatus;
-    };
+//     void setData(int id, string name, string author, bool borrowStatus) {
+//         this->bookID = id;
+//         this->name = name;
+//         this->author = author;
+//         this->borrowStatus = borrowStatus;
+//     };
 
-    void allocateBook(bool borrowStatus) {
-        this->borrowStatus = borrowStatus;
+//     void allocateBook(bool borrowStatus) {
+//         this->borrowStatus = borrowStatus;
 
-    }
+//     }
 
-    void displayBooks() {
-        cout << "id: " << bookID << endl;
-        cout << "name: " << name << endl;
-        cout << "author: " << author << endl;
-        if (borrowStatus) {
-            cout << "book is available........" << endl;
-       }
-        else {
-            cout << "Book is not available......." << endl;
-        }
-    }
+//     void displayBooks() {
+//         cout << "id: " << bookID << endl;
+//         cout << "name: " << name << endl;
+//         cout << "author: " << author << endl;
+//         if (borrowStatus) {
+//             cout << "book is available........" << endl;
+//        }
+//         else {
+//             cout << "Book is not available......." << endl;
+//         }
+//     }
 
 
-    void acceptBook() {
-        if (this->borrowStatus == 1) {
-            cout << "This book is available" << endl;
-        }
-        else {
-            cout << "This book is not available" << endl;
-        }
+//     void acceptBook() {
+//         if (this->borrowStatus == 1) {
+//             cout << "This book is available" << endl;
+//         }
+//         else {
+//             cout << "This book is not available" << endl;
+//         }
         
 
-    }
+//     }
 
+
+
+
+
+
+
+
+// };
+
+// int main()
+// {
+
+
+//     int totalBooks;
+//     cout<<"Enter the number of books you want to enter"<<endl;
+//     cin>>totalBooks;
+//      Libarary *books=new Libarary[totalBooks];
+//     int id;
+//     string name;
+//     string author;
+//     bool borrowStatus;
+
+//     for (int i = 0; i < totalBooks; i++) {
+//         cout << "Enter the id:" << endl;
+//         cin >> id;
+//         cout << "Enter the name:" << endl;
+//         cin >> name;
+//         cout << "Enter the author:" << endl;
+//         cin >> author;
+//         cout << "Enter the borrowStatus:" << endl;
+//         cin >> borrowStatus;
+//         books[i].setData(id, name, author, borrowStatus);
+//     }
+
+   
+
+//         for (int i = 0; i < totalBooks; i++) {
+//             books[i].displayBooks();
+//         }
+// do{
+//         char option;
+//         cout << "You want to borrow book or retuen the book b/r" << endl;
+//         cin >> option;
+        
+//         if (option == 'b') {
+//             int bookId;
+//             cout << "Enter the id of book" << endl;
+//             cin >> bookId;
+//             books[bookId-1].displayBooks();
+//             books[bookId-1].acceptBook();
+//             cout << "You borrow it" << endl;
+//             books[bookId-1].allocateBook(0);
+
+
+//             for (int i = 0; i < totalBooks; i++) {
+//                 books[i].displayBooks();
+//             }
+
+
+//         }
+//         else if (option == 'r') {
+//             int bookId;
+//             cout << "Enter the id of book" << endl;
+//             cin >> bookId;
+//             books[bookId-1].displayBooks();
+//             books[bookId-1].acceptBook();
+//             cout << "You return it" << endl;
+//             books[bookId-1].allocateBook(1);
+
+//             for (int i = 0; i < totalBooks; i++) {
+//                 books[i].displayBooks();
+//             }
+//         }
+
+//         else{
+//             break;
+//         }
+
+//         }while(true);
+        
+
+
+//         return 0;
+
+
+    
+// }
+
+
+
+
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+class House{
+    private:
+    int totalArea;
+    int totalRooms;
+    int totalWashRooms;
+    int totalKitchens;
+    public:
+    House(){};
+    House(int totalArea, int totalRooms, int totalWashRooms,int totalKitchens){
+        this->totalArea=totalArea;
+        this->totalRooms=totalRooms;
+        this->totalWashRooms=totalWashRooms;
+        this->totalKitchens=totalKitchens;
+    }
 
 
 
@@ -222,81 +332,22 @@ public:
 
 };
 
-int main()
-{
 
 
-    int totalBooks;
-    cout<<"Enter the number of books you want to enter"<<endl;
-    cin>>totalBooks;
-     Libarary *books=new Libarary[totalBooks];
-    int id;
-    string name;
-    string author;
-    bool borrowStatus;
-
-    for (int i = 0; i < totalBooks; i++) {
-        cout << "Enter the id:" << endl;
-        cin >> id;
-        cout << "Enter the name:" << endl;
-        cin >> name;
-        cout << "Enter the author:" << endl;
-        cin >> author;
-        cout << "Enter the borrowStatus:" << endl;
-        cin >> borrowStatus;
-        books[i].setData(id, name, author, borrowStatus);
-    }
-
-   
-
-        for (int i = 0; i < totalBooks; i++) {
-            books[i].displayBooks();
-        }
-do{
-        char option;
-        cout << "You want to borrow book or retuen the book b/r" << endl;
-        cin >> option;
-        
-        if (option == 'b') {
-            int bookId;
-            cout << "Enter the id of book" << endl;
-            cin >> bookId;
-            books[bookId-1].displayBooks();
-            books[bookId-1].acceptBook();
-            cout << "You borrow it" << endl;
-            books[bookId-1].allocateBook(0);
 
 
-            for (int i = 0; i < totalBooks; i++) {
-                books[i].displayBooks();
-            }
 
 
-        }
-        else if (option == 'r') {
-            int bookId;
-            cout << "Enter the id of book" << endl;
-            cin >> bookId;
-            books[bookId-1].displayBooks();
-            books[bookId-1].acceptBook();
-            cout << "You return it" << endl;
-            books[bookId-1].allocateBook(1);
-
-            for (int i = 0; i < totalBooks; i++) {
-                books[i].displayBooks();
-            }
-        }
-
-        else{
-            break;
-        }
-
-        }while(true);
-        
 
 
-        return 0;
+
+int main(){
 
 
-    
+
+
+
+
+
+    return 0;
 }
