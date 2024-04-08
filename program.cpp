@@ -359,7 +359,7 @@
 #include <iostream>
 #include <conio.h> // for _getch()
 #include <windows.h> // for Sleep()
-
+#include<ctime>
 using namespace std;
 
 const int width = 20;
