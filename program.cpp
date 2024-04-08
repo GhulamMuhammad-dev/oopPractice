@@ -304,53 +304,187 @@
 
 
 
+// #include <iostream>
+
+// // Base class Player
+// class Player {
+// protected:
+//     int posX;
+//     int posY;
+
+// public:
+//     Player(int x = 0, int y = 0) : posX(x), posY(y) {}
+
+//     void move(int x, int y) {
+//         posX += x;
+//         posY += y;
+//         std::cout << "Player moved to position (" << posX << ", " << posY << ")\n";
+//     }
+// };
+
+// // Subclass Runner inheriting from Player
+// class Runner : public Player {
+// public:
+//     Runner(int x = 0, int y = 0) : Player(x, y) {}
+
+//     void run(int distance) {
+//         move(distance, 0); // Calls base class move function
+//         std::cout << "Runner ran " << distance << " units\n";
+//     }
+// };
+
+// // Subclass Jumper inheriting from Player
+// class Jumper : public Player {
+// public:
+//     Jumper(int x = 0, int y = 0) : Player(x, y) {}
+
+//     void jump(int height) {
+//         move(0, height); // Calls base class move function
+//         std::cout << "Jumper jumped " << height << " units\n";
+//     }
+// };
+
+// int main() {
+    
+//     Runner runner;
+//     Jumper jumper;
+
+//     runner.run(5);
+//     jumper.jump(3);
+
+//     return 0;
+// }
+
+
 #include <iostream>
+#include <conio.h> // for _getch()
+#include <windows.h> // for Sleep()
 
-// Base class Player
-class Player {
-protected:
-    int posX;
-    int posY;
+using namespace std;
 
+const int width = 20;
+const int height = 20;
+
+class Snake {
+private:
+    int x, y;
 public:
-    Player(int x = 0, int y = 0) : posX(x), posY(y) {}
-
-    void move(int x, int y) {
-        posX += x;
-        posY += y;
-        std::cout << "Player moved to position (" << posX << ", " << posY << ")\n";
+    Snake() {
+        x = width / 2;
+        y = height / 2;
+    }
+    int getX() { return x; }
+    int getY() { return y; }
+    void move(int dx, int dy) {
+        x += dx;
+        y += dy;
+    }
+    void draw() {
+        cout << "O";
     }
 };
 
-// Subclass Runner inheriting from Player
-class Runner : public Player {
+class Food {
+private:
+    int x, y;
 public:
-    Runner(int x = 0, int y = 0) : Player(x, y) {}
-
-    void run(int distance) {
-        move(distance, 0); // Calls base class move function
-        std::cout << "Runner ran " << distance << " units\n";
+    Food() {
+        srand(time(0));
+        x = rand() % width;
+        y = rand() % height;
+    }
+    int getX() { return x; }
+    int getY() { return y; }
+    void respawn() {
+        x = rand() % width;
+        y = rand() % height;
+    }
+    void draw() {
+        cout << "*";
     }
 };
 
-// Subclass Jumper inheriting from Player
-class Jumper : public Player {
+class Game {
+private:
+    bool gameOver;
+    Snake snake;
+    Food food;
 public:
-    Jumper(int x = 0, int y = 0) : Player(x, y) {}
+    Game() {
+        gameOver = false;
+    }
+    void setup() {
+        system("cls");
+        cout << "Welcome to Snake Game!" << endl;
+        cout << "Press any key to start..." << endl;
+        _getch();
+    }
+    void input() {
+        if (_kbhit()) {
+            switch (_getch()) {
+                case 'w':
+                    snake.move(0, -1);
+                    break;
+                case 'a':
+                    snake.move(-1, 0);
+                    break;
+                case 's':
+                    snake.move(0, 1);
+                    break;
+                case 'd':
+                    snake.move(1, 0);
+                    break;
+                case 'x':
+                    gameOver = true;
+                    break;
+            }
+        }
+    }
+    void draw() {
+        system("cls");
+        for (int i = 0; i < width + 2; i++)
+            cout << "#";
+        cout << endl;
 
-    void jump(int height) {
-        move(0, height); // Calls base class move function
-        std::cout << "Jumper jumped " << height << " units\n";
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (j == 0)
+                    cout << "#";
+                if (i == snake.getY() && j == snake.getX())
+                    snake.draw();
+                else if (i == food.getY() && j == food.getX())
+                    food.draw();
+                else
+                    cout << " ";
+                if (j == width - 1)
+                    cout << "#";
+            }
+            cout << endl;
+        }
+
+        for (int i = 0; i < width + 2; i++)
+            cout << "#";
+        cout << endl;
+    }
+    void logic() {
+        if (snake.getX() == food.getX() && snake.getY() == food.getY()) {
+            food.respawn();
+        }
+    }
+    bool isGameOver() {
+        return gameOver;
     }
 };
 
 int main() {
-    
-    Runner runner;
-    Jumper jumper;
-
-    runner.run(5);
-    jumper.jump(3);
-
+    Game game;
+    game.setup();
+    while (!game.isGameOver()) {
+        game.input();
+        game.draw();
+        game.logic();
+        Sleep(100); // Adjust the speed of the game
+    }
+    cout << "Game Over!" << endl;
     return 0;
 }
