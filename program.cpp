@@ -362,8 +362,8 @@
 #include<ctime>
 using namespace std;
 
-const int width = 20;
-const int height = 20;
+const int width = 10;
+const int height = 10;
 
 class Snake {
 private:
