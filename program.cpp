@@ -449,7 +449,7 @@ public:
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (j == 0)
-                    cout << "#";
+                    cout << "|";
                 if (i == snake.getY() && j == snake.getX())
                     snake.draw();
                 else if (i == food.getY() && j == food.getX())
@@ -457,7 +457,7 @@ public:
                 else
                     cout << " ";
                 if (j == width - 1)
-                    cout << "#";
+                    cout << "|";
             }
             cout << endl;
         }
