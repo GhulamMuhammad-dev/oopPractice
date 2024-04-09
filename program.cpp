@@ -483,7 +483,7 @@ int main() {
         game.input();
         game.draw();
         game.logic();
-        Sleep(100); // Adjust the speed of the game
+        Sleep(100); 
     }
     cout << "Game Over!" << endl;
     return 0;
