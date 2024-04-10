@@ -498,16 +498,16 @@ using namespace std;
 
 
 
-// void loopThroughArray(string &array ,int size){
+void loopThroughArray(string *array ,int size){
 
-// for(int i=0;i<size;i++){
-//     cout<<array++<<endl;
-// }
-
-
+for(int i=0;i<size;i++){
+    cout<<array<<endl;
+}
 
 
-// }
+
+
+}
 
 
 
@@ -516,7 +516,12 @@ int main(){
    
   const int size=5;
   string Names[size]={"ali","ahmad","danyal","bilal","usman"};
-   cout<<Names<<endl;
+
+  loopThroughArray(Names,size);
+  
+//    for(int i=0;i<size;i++){
+//     cout<<*(Names+i)<<endl;
+//    }
 
 
 
