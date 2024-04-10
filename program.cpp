@@ -356,135 +356,173 @@
 // }
 
 
-#include <iostream>
-#include <conio.h> // for _getch()
-#include <windows.h> // for Sleep()
-#include<ctime>
+// #include <iostream>
+// #include <conio.h> // for _getch()
+// #include <windows.h> // for Sleep()
+// #include<ctime>
+// using namespace std;
+
+// const int width = 10;
+// const int height = 10;
+
+// class Snake {
+// private:
+//     int x, y;
+// public:
+//     Snake() {
+//         x = width / 2;
+//         y = height / 2;
+//     }
+//     int getX() { return x; }
+//     int getY() { return y; }
+//     void move(int dx, int dy) {
+//         x += dx;
+//         y += dy;
+//     }
+//     void draw() {
+//         cout << "O";
+//     }
+// };
+
+// class Food {
+// private:
+//     int x, y;
+// public:
+//     Food() {
+//         srand(time(0));
+//         x = rand() % width;
+//         y = rand() % height;
+//     }
+//     int getX() { return x; }
+//     int getY() { return y; }
+//     void respawn() {
+//         x = rand() % width;
+//         y = rand() % height;
+//     }
+//     void draw() {
+//         cout << "*";
+//     }
+// };
+
+// class Game {
+// private:
+//     bool gameOver;
+//     Snake snake;
+//     Food food;
+// public:
+//     Game() {
+//         gameOver = false;
+//     }
+//     void setup() {
+//         system("cls");
+//         cout << "Welcome to Snake Game!" << endl;
+//         cout << "Press any key to start..." << endl;
+//         _getch();
+//     }
+//     void input() {
+//         if (_kbhit()) {
+//             switch (_getch()) {
+//                 case 'w':
+//                     snake.move(0, -1);
+//                     break;
+//                 case 'a':
+//                     snake.move(-1, 0);
+//                     break;
+//                 case 's':
+//                     snake.move(0, 1);
+//                     break;
+//                 case 'd':
+//                     snake.move(1, 0);
+//                     break;
+//                 case 'x':
+//                     gameOver = true;
+//                     break;
+//             }
+//         }
+//     }
+//     void draw() {
+//         system("cls");
+//         for (int i = 0; i < width + 2; i++)
+//             cout << "-";
+//         cout << endl;
+
+//         for (int i = 0; i < height; i++) {
+//             for (int j = 0; j < width; j++) {
+//                 if (j == 0)
+//                     cout << "|";
+//                 if (i == snake.getY() && j == snake.getX())
+//                     snake.draw();
+//                 else if (i == food.getY() && j == food.getX())
+//                     food.draw();
+//                 else
+//                     cout << " ";
+//                 if (j == width - 1)
+//                     cout << "|";
+//             }
+//             cout << endl;
+//         }
+
+//         for (int i = 0; i < width + 2; i++)
+//             cout << "-";
+//         cout << endl;
+//     }
+//     void logic() {
+//         if (snake.getX() == food.getX() && snake.getY() == food.getY()) {
+//             food.respawn();
+//         }
+//     }
+//     bool isGameOver() {
+//         return gameOver;
+//     }
+// };
+
+// int main() {
+//     Game game;
+//     game.setup();
+//     while (!game.isGameOver()) {
+//         game.input();
+//         game.draw();
+//         game.logic();
+//         Sleep(100); 
+//     }
+//     cout << "Game Over!" << endl;
+//     return 0;
+// }
+
+
+
+#include<iostream>
+#include<string>
+
 using namespace std;
 
-const int width = 10;
-const int height = 10;
 
-class Snake {
-private:
-    int x, y;
-public:
-    Snake() {
-        x = width / 2;
-        y = height / 2;
-    }
-    int getX() { return x; }
-    int getY() { return y; }
-    void move(int dx, int dy) {
-        x += dx;
-        y += dy;
-    }
-    void draw() {
-        cout << "O";
-    }
-};
 
-class Food {
-private:
-    int x, y;
-public:
-    Food() {
-        srand(time(0));
-        x = rand() % width;
-        y = rand() % height;
-    }
-    int getX() { return x; }
-    int getY() { return y; }
-    void respawn() {
-        x = rand() % width;
-        y = rand() % height;
-    }
-    void draw() {
-        cout << "*";
-    }
-};
+// void loopThroughArray(string &array ,int size){
 
-class Game {
-private:
-    bool gameOver;
-    Snake snake;
-    Food food;
-public:
-    Game() {
-        gameOver = false;
-    }
-    void setup() {
-        system("cls");
-        cout << "Welcome to Snake Game!" << endl;
-        cout << "Press any key to start..." << endl;
-        _getch();
-    }
-    void input() {
-        if (_kbhit()) {
-            switch (_getch()) {
-                case 'w':
-                    snake.move(0, -1);
-                    break;
-                case 'a':
-                    snake.move(-1, 0);
-                    break;
-                case 's':
-                    snake.move(0, 1);
-                    break;
-                case 'd':
-                    snake.move(1, 0);
-                    break;
-                case 'x':
-                    gameOver = true;
-                    break;
-            }
-        }
-    }
-    void draw() {
-        system("cls");
-        for (int i = 0; i < width + 2; i++)
-            cout << "-";
-        cout << endl;
+// for(int i=0;i<size;i++){
+//     cout<<array++<<endl;
+// }
 
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (j == 0)
-                    cout << "|";
-                if (i == snake.getY() && j == snake.getX())
-                    snake.draw();
-                else if (i == food.getY() && j == food.getX())
-                    food.draw();
-                else
-                    cout << " ";
-                if (j == width - 1)
-                    cout << "|";
-            }
-            cout << endl;
-        }
 
-        for (int i = 0; i < width + 2; i++)
-            cout << "-";
-        cout << endl;
-    }
-    void logic() {
-        if (snake.getX() == food.getX() && snake.getY() == food.getY()) {
-            food.respawn();
-        }
-    }
-    bool isGameOver() {
-        return gameOver;
-    }
-};
 
-int main() {
-    Game game;
-    game.setup();
-    while (!game.isGameOver()) {
-        game.input();
-        game.draw();
-        game.logic();
-        Sleep(100); 
-    }
-    cout << "Game Over!" << endl;
+
+// }
+
+
+
+
+int main(){
+   
+  const int size=5;
+  string Names[size]={"ali","ahmad","danyal","bilal","usman"};
+   cout<<Names<<endl;
+
+
+
+
+
+
+
     return 0;
 }
