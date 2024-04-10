@@ -504,9 +504,6 @@ for(int i=0;i<size;i++){
     cout<<*(array+i)<<endl;
 }
 
-
-
-
 }
 
 
@@ -514,8 +511,20 @@ for(int i=0;i<size;i++){
 
 int main(){
    
-  const int size=5;
-  string Names[size]={"ali","ahmad","danyal","bilal","usman"};
+//   const int size=5;
+//   string Names[size]={"ali","ahmad","danyal","bilal","usman"};
+
+cout<<"Enter the number of names you want to enter"<<endl;
+int size;
+cin>>size;
+string *Names=new string[size];
+
+for(int i=0;i<size;i++){
+    cout<<"Enter the name: "<<i+1<<endl;
+    cin>>*(Names+i);
+}
+
+
 
   loopThroughArray(Names,size);
   
