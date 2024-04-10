@@ -501,7 +501,7 @@ using namespace std;
 void loopThroughArray(string *array ,int size){
 
 for(int i=0;i<size;i++){
-    cout<<array<<endl;
+    cout<<*(array+i)<<endl;
 }
 
 
@@ -519,9 +519,6 @@ int main(){
 
   loopThroughArray(Names,size);
   
-//    for(int i=0;i<size;i++){
-//     cout<<*(Names+i)<<endl;
-//    }
 
 
 
