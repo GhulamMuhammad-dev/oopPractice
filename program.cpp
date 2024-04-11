@@ -547,10 +547,10 @@ cout<<"You want to enter another name"<<endl;
 cin>>option;
 
 if(option=='y'){
- int newsize=size++;
+ int newsize=size+1;
  string *Names=new string[newsize];
  enterNewItem(Names,newsize);
-
+ showItem(Names,newsize);
 }
 
 
