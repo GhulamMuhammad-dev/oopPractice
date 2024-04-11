@@ -548,7 +548,7 @@ cin>>option;
 
 if(option=='y'){
  int newsize=size+1;
- string *Names=new string[newsize];
+ Names=new string[newsize];
  enterNewItem(Names,newsize);
  showItem(Names,newsize);
 }
