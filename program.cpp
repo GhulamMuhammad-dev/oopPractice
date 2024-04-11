@@ -516,6 +516,14 @@ for(int i=0;i<size;i++){
 
 }
 
+void enterNewItem(string *array ,int newsize){
+
+     cout<<"Enter the name: "<<newsize<<endl;
+      cin>>*(array+newsize);
+
+
+}
+
 
 
 
@@ -541,7 +549,7 @@ cin>>option;
 if(option=='y'){
  int newsize=size++;
  string *Names=new string[newsize];
- enterNewItem(Names,size,newsize);
+ enterNewItem(Names,newsize);
 
 }
 
