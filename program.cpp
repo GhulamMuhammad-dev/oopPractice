@@ -498,13 +498,25 @@ using namespace std;
 
 
 
-void loopThroughArray(string *array ,int size){
+void showItem(string *array ,int size){
 
 for(int i=0;i<size;i++){
-    cout<<*(array+i)<<endl;
+     cout<<*(array+i)<<endl;
 }
 
 }
+
+void enterItem(string *array ,int size){
+
+for(int i=0;i<size;i++){
+     cout<<"Enter the name: "<<i+1<<endl;
+      cin>>*(array+i);
+   
+}
+
+}
+
+
 
 
 
@@ -519,14 +531,22 @@ int size;
 cin>>size;
 string *Names=new string[size];
 
-for(int i=0;i<size;i++){
-    cout<<"Enter the name: "<<i+1<<endl;
-    cin>>*(Names+i);
+enterItem(Names,size);
+showItem(Names,size);
+
+char option;
+cout<<"You want to enter another name"<<endl;
+cin>>option;
+
+if(option=='y'){
+ int newsize=size++;
+ string *Names=new string[newsize];
+ enterNewItem(Names,size,newsize);
+
 }
 
 
 
-  loopThroughArray(Names,size);
   
 
 
