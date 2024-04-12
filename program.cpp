@@ -511,11 +511,7 @@ class Animal{
           cout<<"The destructure is called"<<endl;
       }
       
-      void getData(){
-          cout<<"Name:"<<name<<endl;
-          cout<<"type:"<<type<<endl;
-          cout<<"legs:"<<legs<<endl;
-      }
+     
 
       protected:
       string getName(){
@@ -531,6 +527,13 @@ class Animal{
 };
 
 class AnimalData:public Animal{
+     public:
+     AnimalData(string name, string type, int legs) : Animal(name, type, legs) {}
+       void getData(){
+          cout<<"Name:"<<getName()<<endl;
+          cout<<"type:"<<getType()<<endl;
+          cout<<"legs:"<<getlegs()<<endl;
+      }
 
 };
 
@@ -540,8 +543,8 @@ class AnimalData:public Animal{
 
 int main(){
 
-    Animal dog("tommy","mamal",4);
-    dog.getData();
+    AnimalData dog1("tommy","mamal",4);
+    dog1.getData();
     
 
 
