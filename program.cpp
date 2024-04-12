@@ -493,36 +493,29 @@
 
 #include<iostream>
 #include<string>
-
 using namespace std;
 
+class Animal{
+      private:
+      string name;
+      string type;
+      int legs;
+      public:
+      Animal(string name,string type,int legs){
+          this->name=name;
+          this->type=type;
+          this->legs=legs;
+      }
+      Animal(){};
+      ~Animal(){
+          cout<<"The destructure is called"<<endl;
+      }
 
 
-void showItem(string *array ,int size){
-
-for(int i=0;i<size;i++){
-     cout<<*(array+i)<<endl;
-}
-
-}
-
-void enterItem(string *array ,int size){
-
-for(int i=0;i<size;i++){
-     cout<<"Enter the name: "<<i+1<<endl;
-      cin>>*(array+i);
-   
-}
-
-}
-
-void enterNewItem(string *array ,int newsize){
-
-     cout<<"Enter the name: "<<newsize<<endl;
-      cin>>*(array+newsize);
 
 
-}
+
+};
 
 
 
@@ -530,32 +523,6 @@ void enterNewItem(string *array ,int newsize){
 
 
 int main(){
-   
-//   const int size=5;
-//   string Names[size]={"ali","ahmad","danyal","bilal","usman"};
-
-cout<<"Enter the number of names you want to enter"<<endl;
-int size;
-cin>>size;
-string *Names=new string[size];
-
-enterItem(Names,size);
-showItem(Names,size);
-
-char option;
-cout<<"You want to enter another name"<<endl;
-cin>>option;
-
-if(option=='y'){
- int newsize=size+1;
- Names=new string[newsize];
- enterNewItem(Names,newsize);
- showItem(Names,newsize);
-}
-
-
-
-  
 
 
 
@@ -563,5 +530,10 @@ if(option=='y'){
 
 
 
-    return 0;
+
+
+
+
+
+     return 0;
 }
