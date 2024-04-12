@@ -510,7 +510,12 @@ class Animal{
       ~Animal(){
           cout<<"The destructure is called"<<endl;
       }
-
+      
+      void getData(){
+          cout<<"Name:"<<name<<endl;
+          cout<<"type:"<<type<<endl;
+          cout<<"legs:"<<legs<<endl;
+      }
 
 
 
@@ -524,7 +529,7 @@ class Animal{
 
 int main(){
 
-
+    Animal dog("tommy","mamal",4);
 
 
 
