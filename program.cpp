@@ -517,11 +517,22 @@ class Animal{
           cout<<"legs:"<<legs<<endl;
       }
 
-
-
+      protected:
+      string getName(){
+          return name;
+      }
+      int getlegs(){
+          return legs;
+      }
+      string getType(){
+          return type;
+      }
 
 };
 
+class AnimalData:public Animal{
+
+};
 
 
 
@@ -530,6 +541,8 @@ class Animal{
 int main(){
 
     Animal dog("tommy","mamal",4);
+    dog.getData();
+    
 
 
 
