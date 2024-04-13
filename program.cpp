@@ -495,45 +495,27 @@
 #include<string>
 using namespace std;
 
-class Animal{
-      private:
-      string name;
-      string type;
-      int legs;
-      public:
-      Animal(string name,string type,int legs){
-          this->name=name;
-          this->type=type;
-          this->legs=legs;
-      }
-      Animal(){};
-      ~Animal(){
-          cout<<"The destructure is called"<<endl;
-      }
-      
-     
+class Car{
+   private:
+   double *speed;
+   double *time;
 
-      protected:
-      string getName(){
-          return name;
-      }
-      int getlegs(){
-          return legs;
-      }
-      string getType(){
-          return type;
-      }
+   protected:
 
-};
 
-class AnimalData:public Animal{
-     public:
-     AnimalData(string name, string type, int legs) : Animal(name, type, legs) {}
-       void getData(){
-          cout<<"Name:"<<getName()<<endl;
-          cout<<"type:"<<getType()<<endl;
-          cout<<"legs:"<<getlegs()<<endl;
-      }
+
+   public:
+
+
+
+
+
+
+
+
+
+
+
 
 };
 
@@ -543,8 +525,7 @@ class AnimalData:public Animal{
 
 int main(){
 
-    AnimalData dog1("tommy","mamal",4);
-    dog1.getData();
+
     
 
 
