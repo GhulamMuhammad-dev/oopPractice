@@ -498,15 +498,35 @@ using namespace std;
 class Car{
    private:
    double *speed;
-   double *time;
+   double *distance;
 
    protected:
 
 
 
    public:
+   Car(){};
 
+   void giveSpeed(){
+    double speed;
+    cout<<"Enter the car speed"<<endl;
+    cin>>speed;
+   this->speed=new double(speed);
+   }
 
+   void giveDistance(){
+    double distance;
+    cout<<"Enter the distance covered"<<endl;
+    cin>>distance;
+   this->distance=new double(distance);
+   }
+
+  
+   double getTimeTaken(){
+    
+   double time=(speed)*(distance);
+
+   }
 
 
 
