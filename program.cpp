@@ -524,7 +524,8 @@ class Car{
   
    double getTimeTaken(){
     
-   double time=(speed)*(distance);
+   double time=*speed / *distance;
+   return time;
 
    }
 
@@ -545,7 +546,10 @@ class Car{
 
 int main(){
 
-
+Car c1;
+c1.giveSpeed();
+c1.giveDistance();
+cout<<"The time take by car is "<<c1.getTimeTaken()<<"s"<<endl;
     
 
 
