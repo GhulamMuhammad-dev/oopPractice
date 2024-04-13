@@ -524,7 +524,7 @@ class Car{
   
    double getTimeTaken(){
     
-   double time=*speed / *distance;
+   double time=*distance / *speed;
    return time;
 
    }
