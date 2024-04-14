@@ -500,19 +500,23 @@ class Car{
    private:
    double *speed;
    double *distance;
+   double *maxSpeed;
 
    protected:
 
 
 
    public:
-   Car(){};
+   Car(){
+      this->speed=new double(0);
+   };
+   
 
    void giveMaxSpeed(){
     double speed;
-    cout<<"Enter the car speed"<<endl;
+    cout<<"Enter the car MaxSpeed"<<endl;
     cin>>speed;
-   this->speed=new double(speed);
+   this->maxSpeed=new double(speed);
    }
 
    double showSpeed(){
@@ -562,6 +566,7 @@ char option;
 do{
    option=getch();
    c1.moveCar();
+   cout<<c1.showSpeed()<<endl;
 
 
 
