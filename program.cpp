@@ -493,6 +493,7 @@
 
 #include<iostream>
 #include<string>
+#include<conio.h>
 using namespace std;
 
 class Car{
@@ -529,8 +530,13 @@ class Car{
 
    }
 
+  void moveCar(){
+
+    *speed+=4;
 
 
+
+  }
 
 
 
@@ -549,7 +555,10 @@ int main(){
 Car c1;
 c1.giveMaxSpeed();
 
-    
+do{
+   char option;
+   cin>>option;
+}
 
 
 
