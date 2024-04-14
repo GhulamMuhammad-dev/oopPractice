@@ -507,7 +507,7 @@ class Car{
    public:
    Car(){};
 
-   void giveSpeed(){
+   void giveMaxSpeed(){
     double speed;
     cout<<"Enter the car speed"<<endl;
     cin>>speed;
@@ -547,9 +547,8 @@ class Car{
 int main(){
 
 Car c1;
-c1.giveSpeed();
-c1.giveDistance();
-cout<<"The time take by car is "<<c1.getTimeTaken()<<"s"<<endl;
+c1.giveMaxSpeed();
+
     
 
 
