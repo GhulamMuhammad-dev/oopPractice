@@ -515,6 +515,10 @@ class Car{
    this->speed=new double(speed);
    }
 
+   double showSpeed(){
+      return *speed;
+   }
+
    void giveDistance(){
     double distance;
     cout<<"Enter the distance covered"<<endl;
@@ -554,11 +558,15 @@ int main(){
 
 Car c1;
 c1.giveMaxSpeed();
-
+char option;
 do{
-   char option;
-   cin>>option;
-}
+   option=getch();
+   c1.moveCar();
+
+
+
+
+}while(option=='s');
 
 
 
