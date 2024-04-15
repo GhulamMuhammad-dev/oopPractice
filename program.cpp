@@ -539,8 +539,12 @@ class Car{
    }
 
   void moveCar(){
-
+   if(*speed<=200){
     *speed+=4;
+   }
+   else{
+      cout<<"Speed limit reached"<<endl;
+   }
 
 
 
@@ -585,7 +589,7 @@ do{
 
 
 
-}while(option=='s');
+}while(option=='s' || option=='b');
 
 
 
