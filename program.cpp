@@ -539,7 +539,7 @@ class Car{
    }
 
   void moveCar(){
-   if(*speed<=200){
+   if(*speed<=*maxSpeed){
     *speed+=4;
    }
    else{
@@ -551,8 +551,12 @@ class Car{
   }
 
   void breakCar(){
-
+    if(*speed>=0){
     *speed-=4;
+    }
+    else{
+      *speed=0;
+    }
 
 
 
