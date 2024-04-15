@@ -546,6 +546,14 @@ class Car{
 
   }
 
+  void breakCar(){
+
+    *speed-=4;
+
+
+
+  }
+
 
 
 
@@ -565,8 +573,14 @@ c1.giveMaxSpeed();
 char option;
 do{
    option=getch();
+   if(option=='s'){
    c1.moveCar();
    cout<<c1.showSpeed()<<endl;
+   }
+   else if(option=='b'){
+      c1.breakCar();
+      cout<<c1.showSpeed()<<endl;
+   }
 
 
 
