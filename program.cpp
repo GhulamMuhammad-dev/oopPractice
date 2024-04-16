@@ -1,13 +1,26 @@
 #include<iostream>
 #include<string>
+#include<vector>
 using namespace std;
 
 
 class GameArea{
      private:
-     char *gameGrid[];
+     vector<vector<int>> grid;
+     char gameGrid[];
      public:
-     GameArea(){};
+     GameArea(){
+      grid=vector<vector<int>>(10, vector<int>(10, 0));
+     };
+
+         void printGrid() {
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                cout << grid[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
 
      void setGameGrid(){
      int size;
