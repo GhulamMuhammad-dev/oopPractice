@@ -6,11 +6,11 @@ using namespace std;
 
 class GameArea{
      private:
-     vector<vector<int>> grid;
+     vector<vector<char>> grid;
      char gameGrid[];
      public:
      GameArea(){
-      grid=vector<vector<int>>(10, vector<int>(10, 0));
+      grid=vector<vector<char>>(10, vector<char>(10,'_' ));
      };
 
          void printGrid() {
@@ -46,7 +46,8 @@ class GameArea{
 
 int main(){
 
-
+   GameArea g1;
+   g1.printGrid();
 
 
 
