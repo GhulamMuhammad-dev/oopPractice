@@ -7,15 +7,18 @@ using namespace std;
 class GameArea{
      private:
      vector<vector<char>> grid;
+     int size;
      char gameGrid[];
      public:
      GameArea(){
-      grid=vector<vector<char>>(10, vector<char>(10,'_' ));
+      cout<<"Enter the size of area"<<endl;
+      cin>>size;
+      grid=vector<vector<char>>(size, vector<char>(size,'_' ));
      };
 
          void printGrid() {
-        for (int i = 0; i < 10; ++i) {
-            for (int j = 0; j < 10; ++j) {
+        for (int i = 0; i < size; ++i) {
+            for (int j = 0; j < size; ++j) {
                 cout << grid[i][j] << " ";
             }
             cout << endl;
