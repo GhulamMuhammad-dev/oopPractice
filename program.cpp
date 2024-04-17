@@ -66,7 +66,10 @@ int randomArray[size]={1,4,5,7,6,9,2,-1,3,8};
     int pivotNumber=randomArray[0];
 
 for(int i=1;i<size;i++){
-     if(randomArray[i]<)
+    if(size>=0){
+        size--;
+    }
+     if(randomArray[i+1]>pivotNumber && randomArray[size]<pivotNumber)
 
 
 }
