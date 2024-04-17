@@ -64,12 +64,15 @@ int randomArray[size]={1,4,5,7,6,9,2,-1,3,8};
     int random_number = rand() % 10; 
     
     int pivotNumber=randomArray[0];
-
+  int num=size;
 for(int i=1;i<size;i++){
-    if(size>=0){
-        size--;
+    
+    if(num>=0){
+        num--;
     }
-     if(randomArray[i+1]>pivotNumber && randomArray[size]<pivotNumber)
+     if(randomArray[i+1]>pivotNumber && randomArray[num]<pivotNumber){
+        
+     }
 
 
 }
