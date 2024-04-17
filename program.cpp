@@ -63,9 +63,10 @@ int randomArray[size]={1,4,5,7,6,9,2,-1,3,8};
     srand(time(0));
     int random_number = rand() % 10; 
     
+    int pivotNumber=randomArray[0];
 
-for(int i=0;i<size;i++){
-     if()
+for(int i=1;i<size;i++){
+     if(randomArray[i]<)
 
 
 }
