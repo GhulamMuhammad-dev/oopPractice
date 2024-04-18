@@ -57,25 +57,12 @@
 #include<ctime>
 using namespace std;
 int main(){
-const int size=10;
-int randomArray[size]={1,4,5,7,6,9,2,-1,3,8};
 
-    srand(time(0));
-    int random_number = rand() % 10; 
-    
-    int pivotNumber=randomArray[0];
-  int num=size;
-for(int i=1;i<size;i++){
-    
-    if(num>=0){
-        num--;
-    }
-     if(randomArray[i+1]>pivotNumber && randomArray[num]<pivotNumber){
-        
-     }
+      int originalArray[] = {3, 7, 1, 9, 5, 2, 6, 8, 4, 10};
+    int target = 5;
 
-
-}
+    int countLessThan = 0;
+    int countGreaterThan = 0;
 
 
 
