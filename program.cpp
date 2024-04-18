@@ -72,9 +72,20 @@ int main(){
         }
     }
 
-       int* lessThanTarget = new int[countLessThan];
+    int* lessThanTarget = new int[countLessThan];
     int* greaterThanTarget = new int[countGreaterThan];
 
+     int lessThanIndex = 0;
+    int greaterThanIndex = 0;
+
+
+        for (int i = 0; i < sizeof(originalArray) / sizeof(originalArray[0]); ++i) {
+        if (originalArray[i] < target) {
+            lessThanTarget[lessThanIndex++] = originalArray[i];
+        } else if (originalArray[i] > target) {
+            greaterThanTarget[greaterThanIndex++] = originalArray[i];
+        }
+    }
 
 
     return 0;
