@@ -87,6 +87,21 @@ int main(){
         }
     }
 
+    std::cout << "Elements less than " << target << ": ";
+    for (int i = 0; i < countLessThan; ++i) {
+        std::cout << lessThanTarget[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Elements greater than " << target << ": ";
+    for (int i = 0; i < countGreaterThan; ++i) {
+        std::cout << greaterThanTarget[i] << " ";
+    }
+    std::cout << std::endl;
+
+
+      delete[] lessThanTarget;
+    delete[] greaterThanTarget;
 
     return 0;
 }
