@@ -58,13 +58,22 @@
 using namespace std;
 int main(){
 
-      int originalArray[] = {3, 7, 1, 9, 5, 2, 6, 8, 4, 10};
+    int originalArray[] = {3, 7, 1, 9, 5, 2, 6, 8, 4, 10};
     int target = 5;
 
     int countLessThan = 0;
     int countGreaterThan = 0;
 
+      for (int i = 0; i < sizeof(originalArray) / sizeof(originalArray[0]); ++i) {
+        if (originalArray[i] < target) {
+            ++countLessThan;
+        } else if (originalArray[i] > target) {
+            ++countGreaterThan;
+        }
+    }
 
+       int* lessThanTarget = new int[countLessThan];
+    int* greaterThanTarget = new int[countGreaterThan];
 
 
 
