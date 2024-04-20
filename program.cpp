@@ -30,13 +30,15 @@ class Oil:public ShopItem{
 
 
 
-
+ void checkPrice(ShopItem& item){
+    cout<<item.price()<<endl;
+ }
 
 
 int main(){
 
-
-
+Rice rice;
+checkPrice(rice);
 
 
 
