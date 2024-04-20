@@ -38,7 +38,9 @@ class Oil:public ShopItem{
 int main(){
 
 Rice rice;
+Oil oil;
 checkPrice(rice);
+checkPrice(oil);
 
 
 
