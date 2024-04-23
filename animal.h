@@ -3,14 +3,17 @@
 #include<iostream>
 using namespace std;
 
-namespace ad{
+namespace cd{
    
    class Calculator{
      private:
       int firstNum;
       int secondNum;
+      char oper;
     public:
-    Calculator();
+    Calculator(int fN,int sN,int op);
+
+    double calculate();
    
     ~Calculator();
 
