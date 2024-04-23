@@ -5,16 +5,14 @@ using namespace std;
 
 namespace ad{
    
-   class Animal{
+   class Calculator{
      private:
-      string type;
-      int legs;
+      int firstNum;
+      int secondNum;
     public:
-    Animal();
-    void setType(string type);
-    void setlegs(int legs);
-    void showData();
-    ~Animal();
+    Calculator();
+   
+    ~Calculator();
 
 
    };
