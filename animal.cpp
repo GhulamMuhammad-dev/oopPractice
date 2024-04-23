@@ -37,3 +37,27 @@ Calculator::~Calculator(){
     cout<<"Destructor is called"<<endl;
 }
 
+int main(){
+   int fN,sN;
+   char op;
+
+   cout<<"Enter first number"<<endl;
+   cin>>fN;
+   cout<<"Enter second number"<<endl;
+   cin>>sN;
+   cout<<"Enter operator"<<endl;
+   cin>>op;
+   
+   Calculator c1(fN,sN,op);
+
+   cout<<"The result of calculation is "<<c1.calculate()<<endl;
+
+
+
+
+
+
+
+
+    return 0;
+}
