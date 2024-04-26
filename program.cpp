@@ -60,12 +60,12 @@
 using namespace std;
 
 
-template<typename T>
+template<class T>
 
 class MyType{
     public:
-    T & value;
-    MyType(T& val){
+    T value;
+    MyType(T val){
       this->value=val;
 
     }
@@ -84,7 +84,10 @@ class MyType{
 
 int main(){
 
- 
+ MyType <int>m1(20);
+ MyType <int>m2(10);
+ m2.addValues(m1);
+
 
 
   return 0;
