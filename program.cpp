@@ -55,19 +55,18 @@
 
 
 #include<iostream>
+#include<string>
 
 using namespace std;
 
+template<class T>
+void Print(T){
+  cout<<T<<endl;
+}
 
 int main(){
 
-  int a=0;
-  a++;
-  cout<<a<<endl;
-
-  int b=0;
-  b=b+1;
-  cout<<b<<endl;
+ Print(6);
 
 
   return 0;
