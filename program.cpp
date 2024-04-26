@@ -59,14 +59,32 @@
 
 using namespace std;
 
+
 template<typename T>
-void Print(const T& value){
-  cout<<value<<endl;
-}
+
+class MyType{
+    public:
+    T & value;
+    MyType(T& val){
+      this->value=val;
+
+    }
+    void addValues(MyType m2 ){
+      cout<<this->value+m2.value<<endl;
+
+    }
+
+
+
+
+
+};
+
+
 
 int main(){
 
- Print("Hello world");
+ 
 
 
   return 0;
