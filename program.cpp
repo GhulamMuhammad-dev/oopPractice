@@ -59,14 +59,14 @@
 
 using namespace std;
 
-template<class T>
-void Print(T){
-  cout<<T<<endl;
+template<typename T>
+void Print(const T& value){
+  cout<<value<<endl;
 }
 
 int main(){
 
- Print(6);
+ Print("Hello world");
 
 
   return 0;
