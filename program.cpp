@@ -77,11 +77,12 @@ class ShowData{
 
 
 
-
-
-
-
 };
+
+template<class T1,class T2>
+void ShowData<T1,T2>::show(){
+cout<<data1<<" "<<data2<<endl;
+}
 
 
 int main(){
