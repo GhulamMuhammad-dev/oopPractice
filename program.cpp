@@ -60,19 +60,22 @@
 using namespace std;
 
 
-template<class T>
+template<class T1,class T2>
 
-class MyType{
-    public:
-    T value;
-    MyType(const T& val){
-      this->value=val;
+class ShowData{
 
-    }
-    void addValues(MyType m2 ){
-      cout<<this->value+m2.value<<endl;
+  private:
+  T1 data1;
+  T2 data2;
+  public:
+  ShowData(T1 a,T2 b){
+    data1=a;
+    data2=b;
+  }
 
-    }
+  void show();
+
+
 
 
 
@@ -81,16 +84,9 @@ class MyType{
 };
 
 
-template <typename Ty>
-Ty print(Ty a){
-  return a;
-}
-
-
-
 int main(){
 
-  cout<<print("hello");
+ 
 
 
 
