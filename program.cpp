@@ -65,7 +65,7 @@ template<class T>
 class MyType{
     public:
     T value;
-    MyType(T val){
+    MyType(const T& val){
       this->value=val;
 
     }
@@ -81,12 +81,16 @@ class MyType{
 };
 
 
+template <typename Ty>
+Ty print(Ty a){
+  return a;
+}
+
+
 
 int main(){
 
- MyType <int>m1(20);
- MyType <int>m2(10);
- m2.addValues(m1);
+  cout<<print("hello");
 
 
 
