@@ -87,7 +87,8 @@ cout<<data1<<" "<<data2<<endl;
 
 int main(){
 
- 
+ ShowData <string,int> d1("helloo",223);
+ d1.show();
 
 
 
