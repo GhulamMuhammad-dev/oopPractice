@@ -110,9 +110,14 @@ class Employee{
     public:
     Employee(string name,int salary){
          id=current_id++;
+         this->name=name;
     }
-   void getId() const{
-    cout<<id<<endl;
+   int getId() const{
+    return id;
+   }
+
+   string getName(){
+    return name;
    }
    static int current_id;
     
@@ -121,7 +126,7 @@ class Employee{
 int Employee::current_id=0;
 
 ostream& operator<<(ostream&COUT,Employee employee){
-  employee.getId();
+  COUT<<"The id of employee: "<<employee.getName()<<" is "<<employee.getId();
   return COUT;
 }
 
@@ -130,7 +135,7 @@ int main(){
 
 Employee e1("ahmad",2000),e2("danyal",3000),e3("bilal",4000);
 
-cout<<e3;
+cout<<e3<<endl<<e2;
 
 
 
