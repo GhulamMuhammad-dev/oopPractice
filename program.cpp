@@ -120,11 +120,17 @@ class Employee{
 
 int Employee::current_id=0;
 
+ostream& operator<<(ostream&COUT,Employee employee){
+  employee.getId();
+  return COUT;
+}
+
 int main(){
 
 
 Employee e1("ahmad",2000),e2("danyal",3000),e3("bilal",4000);
-e3.getId();
+
+cout<<e3;
 
 
 
