@@ -54,41 +54,79 @@
 
 
 
+// #include<iostream>
+// #include<string>
+
+// using namespace std;
+
+
+// template<class T1,class T2>
+
+// class ShowData{
+
+//   private:
+//   T1 data1;
+//   T2 data2;
+//   public:
+//   ShowData(T1 a,T2 b){
+//     data1=a;
+//     data2=b;
+//   }
+
+//   void show();
+
+
+
+// };
+
+// template<class T1,class T2>
+// void ShowData<T1,T2>::show(){
+// cout<<data1<<" "<<data2<<endl;
+// }
+
+
+// int main(){
+
+//  ShowData <string,int> d1("helloo",223);
+//  d1.show();
+
+
+
+//   return 0;
+// }
+
+
 #include<iostream>
 #include<string>
 
 using namespace std;
 
 
-template<class T1,class T2>
-
-class ShowData{
-
-  private:
-  T1 data1;
-  T2 data2;
-  public:
-  ShowData(T1 a,T2 b){
-    data1=a;
-    data2=b;
-  }
-
-  void show();
-
-
-
+class Employee{
+    private:
+     int id;
+    string name;
+    int salary;
+    public:
+    Employee(string name,int salary){
+         id=current_id++;
+    }
+   void getId() const{
+    cout<<id<<endl;
+   }
+   static int current_id;
+    
 };
 
-template<class T1,class T2>
-void ShowData<T1,T2>::show(){
-cout<<data1<<" "<<data2<<endl;
-}
-
+int Employee::current_id=0;
 
 int main(){
 
- ShowData <string,int> d1("helloo",223);
- d1.show();
+
+Employee e1("ahmad",2000),e2("danyal",3000),e3("bilal",4000);
+e3.getId();
+
+
 
 
 
