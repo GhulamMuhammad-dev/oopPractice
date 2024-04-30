@@ -96,46 +96,99 @@
 // }
 
 
+// #include<iostream>
+// #include<string>
+
+// using namespace std;
+
+
+// class Employee{
+//     private:
+//      int id;
+//     string name;
+//     int salary;
+//     public:
+//     Employee(string name,int salary){
+//          id=current_id++;
+//          this->name=name;
+//     }
+//    int getId() const{
+//     return id;
+//    }
+
+//    string getName(){
+//     return name;
+//    }
+//    static int current_id;
+    
+// };
+
+// int Employee::current_id=0;
+
+// ostream& operator<<(ostream&COUT,Employee employee){
+//   COUT<<"The id of employee: "<<employee.getName()<<" is "<<employee.getId();
+//   return COUT;
+// }
+
+// int main(){
+
+
+// Employee e1("ahmad",2000),e2("danyal",3000),e3("bilal",4000);
+
+// cout<<e3<<endl<<e2;
+
+
+
+
+
+//   return 0;
+// }
+
+
 #include<iostream>
 #include<string>
-
 using namespace std;
 
+class Complex{
+   private:
+   int real;
+   int imaginary;
 
-class Employee{
-    private:
-     int id;
-    string name;
-    int salary;
-    public:
-    Employee(string name,int salary){
-         id=current_id++;
-         this->name=name;
-    }
-   int getId() const{
-    return id;
-   }
+   public:
+   Complex(){};
+   Complex(int r,int i):real(r),imaginary(i){};
 
-   string getName(){
-    return name;
-   }
-   static int current_id;
-    
+  Complex operator+(Complex obj){
+     Complex temp;
+     temp.real=real+obj.real;
+     temp.imaginary=imaginary+obj.imaginary;
+     return temp;
+  }
+  
+
+  void output(){
+    cout<<real<<":"<<imaginary<<"i"<<endl;
+  }
+
+
+
 };
 
-int Employee::current_id=0;
 
-ostream& operator<<(ostream&COUT,Employee employee){
-  COUT<<"The id of employee: "<<employee.getName()<<" is "<<employee.getId();
-  return COUT;
-}
+
+
+
+
+
+
 
 int main(){
 
 
-Employee e1("ahmad",2000),e2("danyal",3000),e3("bilal",4000);
 
-cout<<e3<<endl<<e2;
+
+
+
 
 
 
