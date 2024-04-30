@@ -185,7 +185,9 @@ class Complex{
 int main(){
 
 
-
+Complex c1(12,3),c2(2,5),res;
+res=c1+c2;
+res.output();
 
 
 
