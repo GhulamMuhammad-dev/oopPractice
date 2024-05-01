@@ -149,25 +149,25 @@
 #include<string>
 using namespace std;
 
-class Complex{
+class Numbers{
    private:
-   int real;
-   int imaginary;
+   int num;
+   
 
    public:
-   Complex(){};
-   Complex(int r,int i):real(r),imaginary(i){};
+   Numbers(){};
+   Numbers(int r):num(r){};
 
-  Complex operator+=(Complex obj){
+  Numbers operator/( Numbers num2){
+     Numbers temp;
+    temp=num/num2.num;
+    return temp;
 
-     real+=obj.real;
-     imaginary+=obj.imaginary;
-     
   }
   
-  void output(){
-    cout<<real<<":"<<imaginary<<"i"<<endl;
-  }
+   void output(){
+    cout<<num;
+   }
 
 
 
@@ -175,9 +175,10 @@ class Complex{
 
 int main(){
 
-Complex c1(12,3),c2(2,5);
-c1+=c2;
-c1.output();
+Numbers n1(10),n2(5),res;
+
+res=n1/n2;
+res.output();
 
   return 0;
 }
