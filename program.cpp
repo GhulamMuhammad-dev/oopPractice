@@ -145,50 +145,94 @@
 // }
 
 
+// #include <iostream>
+// #include <new> 
+// #include <cstdlib> 
+// using namespace std;
+
+// class CustomAllocator {
+// public:
+  
+//     static void* operator new(size_t size) {
+//         cout << "Allocating " << size << " bytes of memory using custom new operator." << std::endl;
+//         void* ptr = std::malloc(size);
+//         if (!ptr) {
+//             throw std::bad_alloc(); // If allocation fails, throw bad_alloc
+//         }
+//         return ptr;
+//     }
+
+//     // Overloading the global delete operator
+//     static void operator delete(void* ptr) {
+//         std::cout << "Deallocating memory using custom delete operator." << std::endl;
+//         std::free(ptr); // Freeing memory
+//     }
+// };
+
+
+// class MyClass : public CustomAllocator {
+// public:
+//     int data;
+
+//     MyClass(int val) : data(val) {
+//         std::cout << "MyClass constructor with value: " << val << std::endl;
+//     }
+
+//     ~MyClass() {
+//         std::cout << "MyClass destructor" << std::endl;
+//     }
+// };
+
+// int main() {
+
+
+//     MyClass* obj = new MyClass(2);
+//     std::cout << "Object data: " << obj->data << std::endl;
+//     delete obj;
+
+//     return 0;
+// }
+
+
+
 #include <iostream>
-#include <new> 
-#include <cstdlib> 
 using namespace std;
 
-class CustomAllocator {
+class Toggle {
+private:
+    bool state; 
+
 public:
+   
+    Toggle(bool initialState = false) : state(initialState) {}
+
+    
+    bool operator!() const {
+        return !state; 
+    }
+
   
-    static void* operator new(size_t size) {
-        cout << "Allocating " << size << " bytes of memory using custom new operator." << std::endl;
-        void* ptr = std::malloc(size);
-        if (!ptr) {
-            throw std::bad_alloc(); // If allocation fails, throw bad_alloc
-        }
-        return ptr;
+    bool getState() const {
+        return state;
     }
 
-    // Overloading the global delete operator
-    static void operator delete(void* ptr) {
-        std::cout << "Deallocating memory using custom delete operator." << std::endl;
-        std::free(ptr); // Freeing memory
-    }
-};
-
-
-class MyClass : public CustomAllocator {
-public:
-    int data;
-
-    MyClass(int val) : data(val) {
-        std::cout << "MyClass constructor with value: " << val << std::endl;
-    }
-
-    ~MyClass() {
-        std::cout << "MyClass destructor" << std::endl;
+  
+    void setState(bool newState) {
+        state = newState;
     }
 };
 
 int main() {
+   
+    Toggle myToggle(true);
 
+    cout << "Initial state: " << myToggle.getState() << endl;
 
-    MyClass* obj = new MyClass(2);
-    std::cout << "Object data: " << obj->data << std::endl;
-    delete obj;
+  
+    bool toggled = !myToggle;
+
+  
+    cout << "After applying '!': " << toggled << std::endl;
 
     return 0;
 }
