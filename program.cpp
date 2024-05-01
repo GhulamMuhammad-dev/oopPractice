@@ -145,40 +145,50 @@
 // }
 
 
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <new> 
+#include <cstdlib> 
 using namespace std;
 
-class Numbers{
-   private:
-   int num;
-   
-
-   public:
-   Numbers(){};
-   Numbers(int r):num(r){};
-
-  Numbers operator/( Numbers num2){
-     Numbers temp;
-    temp=num/num2.num;
-    return temp;
-
-  }
+class CustomAllocator {
+public:
   
-   void output(){
-    cout<<num;
-   }
+    static void* operator new(size_t size) {
+        cout << "Allocating " << size << " bytes of memory using custom new operator." << std::endl;
+        void* ptr = std::malloc(size);
+        if (!ptr) {
+            throw std::bad_alloc(); // If allocation fails, throw bad_alloc
+        }
+        return ptr;
+    }
 
-
-
+    // Overloading the global delete operator
+    static void operator delete(void* ptr) {
+        std::cout << "Deallocating memory using custom delete operator." << std::endl;
+        std::free(ptr); // Freeing memory
+    }
 };
 
-int main(){
 
-Numbers n1(10),n2(5),res;
+class MyClass : public CustomAllocator {
+public:
+    int data;
 
-res=n1/n2;
-res.output();
+    MyClass(int val) : data(val) {
+        std::cout << "MyClass constructor with value: " << val << std::endl;
+    }
 
-  return 0;
+    ~MyClass() {
+        std::cout << "MyClass destructor" << std::endl;
+    }
+};
+
+int main() {
+
+
+    MyClass* obj = new MyClass(2);
+    std::cout << "Object data: " << obj->data << std::endl;
+    delete obj;
+
+    return 0;
 }
