@@ -158,14 +158,13 @@ class Complex{
    Complex(){};
    Complex(int r,int i):real(r),imaginary(i){};
 
-  Complex operator+(Complex obj){
-     Complex temp;
-     temp.real=real+obj.real;
-     temp.imaginary=imaginary+obj.imaginary;
-     return temp;
+  Complex operator+=(Complex obj){
+
+     real+=obj.real;
+     imaginary+=obj.imaginary;
+     
   }
   
-
   void output(){
     cout<<real<<":"<<imaginary<<"i"<<endl;
   }
@@ -174,27 +173,11 @@ class Complex{
 
 };
 
-
-
-
-
-
-
-
-
 int main(){
 
-
-Complex c1(12,3),c2(2,5),res;
-res=c1+c2;
-res.output();
-
-
-
-
-
-
-
+Complex c1(12,3),c2(2,5);
+c1+=c2;
+c1.output();
 
   return 0;
 }
