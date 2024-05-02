@@ -195,44 +195,106 @@
 
 
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class Toggle {
-private:
-    bool state; 
+// class Toggle {
+// private:
+//     bool state; 
 
-public:
+// public:
    
-    Toggle(bool initialState = false) : state(initialState) {}
+//     Toggle(bool initialState = false) : state(initialState) {}
 
     
-    bool operator!() const {
-        return !state; 
-    }
+//     bool operator!() const {
+//         return !state; 
+//     }
 
   
-    bool getState() const {
-        return state;
-    }
+//     bool getState() const {
+//         return state;
+//     }
 
   
-    void setState(bool newState) {
-        state = newState;
+//     void setState(bool newState) {
+//         state = newState;
+//     }
+// };
+
+// int main() {
+   
+//     Toggle myToggle(true);
+
+//     cout << "Initial state: " << myToggle.getState() << endl;
+
+  
+//     bool toggled = !myToggle;
+
+  
+//     cout << "After applying '!': " << toggled << std::endl;
+
+//     return 0;
+// }
+
+
+#include <iostream>
+#include <stdexcept> 
+
+using namespace std;
+
+
+class DynamicArray {
+private:
+    int* data;   
+    size_t size;
+
+public:
+    
+    DynamicArray(size_t size) : size(size) {
+        data = new int[size]; 
+    }
+
+    
+    ~DynamicArray() {
+        delete[] data; 
+    }
+
+   
+    int& operator[](std::size_t index) {
+        if (index >= size) {
+            throw out_of_range("Index out of range"); 
+        }
+        return data[index]; 
+    }
+
+   
+    size_t getSize() const {
+        return size;
     }
 };
 
 int main() {
+    
+    DynamicArray arr(5);
+
+  
+    for (std::size_t i = 0; i < arr.getSize(); ++i) {
+        arr[i] = i * 10; 
+    }
+
    
-    Toggle myToggle(true);
+    std::cout << "Array contents: ";
+    for (std::size_t i = 0; i < arr.getSize(); ++i) {
+        std::cout << arr[i] << " ";
+    }
+    cout << endl;
 
-    cout << "Initial state: " << myToggle.getState() << endl;
-
-  
-    bool toggled = !myToggle;
-
-  
-    cout << "After applying '!': " << toggled << std::endl;
+    try {
+        cout << "Attempting to access index 6: " << arr[6] << std::endl;
+    } catch (const std::out_of_range& e) {
+        cout << "Error: " << e.what() << std::endl; 
+    }
 
     return 0;
 }
