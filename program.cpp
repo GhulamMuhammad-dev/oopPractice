@@ -238,63 +238,113 @@
 // }
 
 
-#include <iostream>
-#include <stdexcept> 
+// #include <iostream>
+// #include <stdexcept> 
 
-using namespace std;
+// using namespace std;
 
 
-class DynamicArray {
-private:
-    int* data;   
-    size_t size;
+// class DynamicArray {
+// private:
+//     int* data;   
+//     size_t size;
 
-public:
+// public:
     
-    DynamicArray(size_t size) : size(size) {
-        data = new int[size]; 
-    }
+//     DynamicArray(size_t size) : size(size) {
+//         data = new int[size]; 
+//     }
 
     
-    ~DynamicArray() {
-        delete[] data; 
-    }
+//     ~DynamicArray() {
+//         delete[] data; 
+//     }
 
    
-    int& operator[](std::size_t index) {
-        if (index >= size) {
-            throw out_of_range("Index out of range"); 
-        }
-        return data[index]; 
-    }
+//     int& operator[](std::size_t index) {
+//         if (index >= size) {
+//             throw out_of_range("Index out of range"); 
+//         }
+//         return data[index]; 
+//     }
 
    
-    size_t getSize() const {
-        return size;
-    }
-};
+//     size_t getSize() const {
+//         return size;
+//     }
+// };
 
-int main() {
+// int main() {
     
-    DynamicArray arr(5);
+//     DynamicArray arr(5);
 
   
-    for (std::size_t i = 0; i < arr.getSize(); ++i) {
-        arr[i] = i * 10; 
-    }
+//     for (std::size_t i = 0; i < arr.getSize(); ++i) {
+//         arr[i] = i * 10; 
+//     }
 
    
-    std::cout << "Array contents: ";
-    for (std::size_t i = 0; i < arr.getSize(); ++i) {
-        std::cout << arr[i] << " ";
-    }
-    cout << endl;
+//     std::cout << "Array contents: ";
+//     for (std::size_t i = 0; i < arr.getSize(); ++i) {
+//         std::cout << arr[i] << " ";
+//     }
+//     cout << endl;
 
-    try {
-        cout << "Attempting to access index 6: " << arr[6] << std::endl;
-    } catch (const std::out_of_range& e) {
-        cout << "Error: " << e.what() << std::endl; 
-    }
+//     try {
+//         cout << "Attempting to access index 6: " << arr[6] << std::endl;
+//     } catch (const std::out_of_range& e) {
+//         cout << "Error: " << e.what() << std::endl; 
+//     }
 
+//     return 0;
+// }
+
+
+#include<iostream>
+using namespace std;
+
+class Dimension{
+      private:
+      int length;
+      int width;
+     public:
+     Dimension(){};
+     Dimension(int l,int w):length(l),width(w){
+
+     } ;
+
+
+     Dimension operator+(Dimension &D1){
+        Dimension temp;
+        temp.length=length+D1.length;
+        temp.width=width+D1.width;
+        return temp;
+     }
+
+     void output(){
+        cout<<length<<":"<<width<<endl;
+     }
+
+
+
+
+
+
+
+
+
+};
+
+
+
+
+
+
+
+int main(){
+
+    Dimension d1(12,16),d2(12,4),res;
+    res=d1+d2;
+    res.output();
     return 0;
 }
