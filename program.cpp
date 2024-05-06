@@ -384,24 +384,24 @@ public:
     }
 };
 
-// Main function to demonstrate polymorphism
+
 int main() {
-    // Create a vector of pointers to base class Animal
+   
     std::vector<Animal*> animals;
 
-    // Add derived class objects to the vector
+   
     animals.push_back(new Dog());
     animals.push_back(new Cat());
     animals.push_back(new Animal());
 
-    // Loop through the vector and call the speak method on each Animal
+   
     for (const auto& animal : animals) {
-        animal->speak();  // Polymorphic call, uses runtime type information
+        animal->speak(); 
     }
 
-    // Clean up (avoid memory leaks)
+   
     for (auto& animal : animals) {
-        delete animal;  // Properly calls the derived class destructor
+        delete animal;  
     }
 
     return 0;
