@@ -353,131 +353,55 @@
 
 #include <iostream>
 #include <vector>
-#include <queue>
-#include <unordered_set>
-#include <cmath>
-#include <algorithm>
 
-// Point structure representing coordinates on the grid
-struct Point {
-    int x, y;
-    Point(int x = 0, int y = 0) : x(x), y(y) {}
-    bool operator==(const Point& other) const { return x == other.x && y == other.y; }
-};
+// Base class representing a generic animal
+class Animal {
+public:
+    // Virtual destructor ensures derived class destructors are called
+    virtual ~Animal() {}
 
-// Hash function for unordered containers with Point keys
-struct PointHash {
-    size_t operator()(const Point& p) const {
-        return std::hash<int>()(p.x) ^ (std::hash<int>()(p.y) << 1);
+    // Virtual function that derived classes will override
+    virtual void speak() const {
+        std::cout << "Animal makes a sound." << std::endl;
     }
 };
 
-// Manhattan distance as the heuristic function
-int heuristic(const Point& a, const Point& b) {
-    return std::abs(a.x - b.x) + std::abs(a.y - b.y);
-}
-
-// Structure representing a node in the search space
-struct Node {
-    Point point;
-    int g;  // Cost from the start node
-    int h;  // Heuristic cost to the goal node
-    Node* parent;
-    Node(const Point& p, int g = 0, int h = 0, Node* parent = nullptr) 
-        : point(p), g(g), h(h), parent(parent) {}
-
-    int f() const { return g + h; }  // Total cost
-};
-
-// Comparator for the priority queue
-struct NodeCompare {
-    bool operator()(const Node* a, const Node* b) const {
-        return a->f() > b->f();  // Lower f comes first
+// Derived class representing a Dog
+class Dog : public Animal {
+public:
+    // Override the speak method for Dog
+    void speak() const override {
+        std::cout << "Dog barks: Woof!" << std::endl;
     }
 };
 
-// A* algorithm with a priority queue and a set for open nodes tracking
-std::vector<Point> a_star(const std::vector<std::vector<int>>& grid, const Point& start, const Point& goal) {
-    std::priority_queue<Node*, std::vector<Node*>, NodeCompare> open_list;
-    std::unordered_set<Point, PointHash> open_set;
-    std::unordered_set<Point, PointHash> closed_list;
-
-    open_list.push(new Node(start, 0, heuristic(start, goal)));
-    open_set.insert(start);
-
-    const std::vector<Point> directions = { {0, 1}, {1, 0}, {0, -1}, {-1, 0} };  // 4-way movement
-
-    while (!open_list.empty()) {
-        Node* current = open_list.top();
-        open_list.pop();
-        open_set.erase(current->point);
-
-        if (current->point == goal) {
-            // Reconstruct the path
-            std::vector<Point> path;
-            Node* node = current;
-            while (node) {
-                path.push_back(node->point);
-                node = node->parent;
-            }
-            std::reverse(path.begin(), path.end());
-            return path;
-        }
-
-        closed_list.insert(current->point);
-
-        for (const Point& dir : directions) {
-            Point neighbor(current->point.x + dir.x, current->point.y + dir.y);
-
-            // Out-of-bounds check or wall check
-            if (neighbor.x < 0 || neighbor.y < 0 || 
-                neighbor.x >= grid.size() || 
-                neighbor.y >= grid[0].size() || 
-                grid[neighbor.x][neighbor.y] == 1) {
-                continue;
-            }
-
-            if (closed_list.count(neighbor)) {
-                continue;  // Already processed this node
-            }
-
-            int tentative_g = current->g + 1;  // Cost from start to this neighbor
-
-            // Check if the neighbor is in the open_list (tracked by open_set)
-            if (open_set.count(neighbor) == 0) {
-                int h = heuristic(neighbor, goal);
-                open_list.push(new Node(neighbor, tentative_g, h, current));
-                open_set.insert(neighbor);  // Add to open_set
-            }
-        }
+// Derived class representing a Cat
+class Cat : public Animal {
+public:
+    // Override the speak method for Cat
+    void speak() const override {
+        std::cout << "Cat meows: Meow!" << std::endl;
     }
+};
 
-    // No path found
-    return {};
-}
-
+// Main function to demonstrate polymorphism
 int main() {
-    // 0 = passable, 1 = wall
-    std::vector<std::vector<int>> grid = {
-        {0, 0, 0, 1},
-        {0, 1, 0, 1},
-        {0, 0, 0, 0},
-        {1, 1, 0, 0},
-    };
+    // Create a vector of pointers to base class Animal
+    std::vector<Animal*> animals;
 
-    Point start(0, 0);
-    Point goal(2, 3);
+    // Add derived class objects to the vector
+    animals.push_back(new Dog());
+    animals.push_back(new Cat());
+    animals.push_back(new Animal());
 
-    std::vector<Point> path = a_star(grid, start, goal);
+    // Loop through the vector and call the speak method on each Animal
+    for (const auto& animal : animals) {
+        animal->speak();  // Polymorphic call, uses runtime type information
+    }
 
-    if (!path.empty()) {
-        std::cout << "Path found:\n";
-        for (const Point& p : path) {
-            std::cout << "(" << p.x << ", " << p.y << ") -> ";
-        }
-        std::cout << "Goal\n";
-    } else {
-        std::cout << "No path found.\n";
+    // Clean up (avoid memory leaks)
+    for (auto& animal : animals) {
+        delete animal;  // Properly calls the derived class destructor
     }
 
     return 0;
