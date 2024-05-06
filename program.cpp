@@ -300,32 +300,30 @@
 // }
 
 
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
 
-class Dimension{
-      private:
-      int length;
-      int width;
-     public:
-     Dimension(){};
-     Dimension(int l,int w):length(l),width(w){
+// class Dimension{
+//       private:
+//       int length;
+//       int width;
+//      public:
+//      Dimension(){};
+//      Dimension(int l,int w):length(l),width(w){
 
-     } ;
-
-
-     Dimension operator+(Dimension &D1){
-        Dimension temp;
-        temp.length=length+D1.length;
-        temp.width=width+D1.width;
-        return temp;
-     }
-
-     void output(){
-        cout<<length<<":"<<width<<endl;
-     }
+//      } ;
 
 
+//      Dimension operator+(Dimension &D1){
+//         Dimension temp;
+//         temp.length=length+D1.length;
+//         temp.width=width+D1.width;
+//         return temp;
+//      }
+
+//      void output(){
+//         cout<<length<<":"<<width<<endl;
+//      }
 
 
 
@@ -333,18 +331,153 @@ class Dimension{
 
 
 
+
+
+// };
+
+
+
+
+
+
+
+// int main(){
+
+//     Dimension d1(12,16),d2(12,4),res;
+//     res=d1+d2;
+//     res.output();
+//     return 0;
+// }
+
+
+
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <unordered_set>
+#include <cmath>
+#include <algorithm>
+
+// Structure to represent a point on the grid
+struct Point {
+    int x, y;
+    Point(int x = 0, int y = 0) : x(x), y(y) {}
+    bool operator==(const Point& other) const { return x == other.x && y == other.y; }
 };
 
+// Hash function for unordered_set and unordered_map with Point keys
+struct PointHash {
+    size_t operator()(const Point& p) const {
+        return std::hash<int>()(p.x) ^ (std::hash<int>()(p.y) << 1);
+    }
+};
 
+// Function to calculate the heuristic (Manhattan distance)
+int heuristic(const Point& a, const Point& b) {
+    return std::abs(a.x - b.x) + std::abs(a.y - b.y);
+}
 
+// Structure to represent a node in the search space
+struct Node {
+    Point point;
+    int g;  // Cost from the start node
+    int h;  // Heuristic cost to the goal node
+    Node* parent;
+    Node(const Point& p, int g = 0, int h = 0, Node* parent = nullptr) 
+        : point(p), g(g), h(h), parent(parent) {}
+    
+    int f() const { return g + h; }  // Total cost
+};
 
+// Comparator for priority queue based on f value
+struct NodeCompare {
+    bool operator()(const Node* a, const Node* b) const {
+        return a->f() > b->f();  // Lower f comes first
+    }
+};
 
+// A* pathfinding algorithm
+std::vector<Point> a_star(const std::vector<std::vector<int>>& grid, const Point& start, const Point& goal) {
+    std::priority_queue<Node*, std::vector<Node*>, NodeCompare> open_list;
+    std::unordered_set<Point, PointHash> closed_list;
 
+    open_list.push(new Node(start, 0, heuristic(start, goal)));
 
-int main(){
+    const std::vector<Point> directions = { {0, 1}, {1, 0}, {0, -1}, {-1, 0} };  // 4-way movement
 
-    Dimension d1(12,16),d2(12,4),res;
-    res=d1+d2;
-    res.output();
+    while (!open_list.empty()) {
+        Node* current = open_list.top();
+        open_list.pop();
+
+        if (current->point == goal) {
+            // Reconstruct the path
+            std::vector<Point> path;
+            Node* node = current;
+            while (node) {
+                path.push_back(node->point);
+                node = node->parent;
+            }
+            std::reverse(path.begin(), path.end());
+            return path;
+        }
+
+        closed_list.insert(current->point);
+
+        for (const Point& dir : directions) {
+            Point neighbor(current->point.x + dir.x, current->point.y + dir.y);
+
+            // Check if the neighbor is out of bounds or is a wall
+            if (neighbor.x < 0 || neighbor.y < 0 || 
+                neighbor.x >= grid.size() || 
+                neighbor.y >= grid[0].size() || 
+                grid[neighbor.x][neighbor.y] == 1) {
+                continue;
+            }
+
+            if (closed_list.count(neighbor)) {
+                continue;  // Already processed this node
+            }
+
+            int tentative_g = current->g + 1;  // Cost from start to this neighbor
+
+            // Check if neighbor is in open_list with a better g value
+            auto it = std::find_if(open_list.cbegin(), open_list.cend(), 
+                [&neighbor](const Node* n) { return n->point == neighbor; });
+
+            if (it == open_list.cend() || tentative_g < (*it)->g) {
+                int h = heuristic(neighbor, goal);
+                open_list.push(new Node(neighbor, tentative_g, h, current));
+            }
+        }
+    }
+
+    // No path found
+    return {};
+}
+
+int main() {
+    // 0 = passable, 1 = wall
+    std::vector<std::vector<int>> grid = {
+        {0, 0, 0, 1},
+        {0, 1, 0, 1},
+        {0, 0, 0, 0},
+        {1, 1, 0, 0},
+    };
+
+    Point start(0, 0);
+    Point goal(2, 3);
+
+    std::vector<Point> path = a_star(grid, start, goal);
+
+    if (!path.empty()) {
+        std::cout << "Path found:\n";
+        for (const Point& p : path) {
+            std::cout << "(" << p.x << ", " << p.y << ") -> ";
+        }
+        std::cout << "Goal\n";
+    } else {
+        std::cout << "No path found.\n";
+    }
+
     return 0;
 }
