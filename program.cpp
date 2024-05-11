@@ -238,171 +238,171 @@
 // }
 
 
-// #include <iostream>
-// #include <stdexcept> 
-
-// using namespace std;
-
-
-// class DynamicArray {
-// private:
-//     int* data;   
-//     size_t size;
-
-// public:
-    
-//     DynamicArray(size_t size) : size(size) {
-//         data = new int[size]; 
-//     }
-
-    
-//     ~DynamicArray() {
-//         delete[] data; 
-//     }
-
-   
-//     int& operator[](std::size_t index) {
-//         if (index >= size) {
-//             throw out_of_range("Index out of range"); 
-//         }
-//         return data[index]; 
-//     }
-
-   
-//     size_t getSize() const {
-//         return size;
-//     }
-// };
-
-// int main() {
-    
-//     DynamicArray arr(5);
-
-  
-//     for (std::size_t i = 0; i < arr.getSize(); ++i) {
-//         arr[i] = i * 10; 
-//     }
-
-   
-//     std::cout << "Array contents: ";
-//     for (std::size_t i = 0; i < arr.getSize(); ++i) {
-//         std::cout << arr[i] << " ";
-//     }
-//     cout << endl;
-
-//     try {
-//         cout << "Attempting to access index 6: " << arr[6] << std::endl;
-//     } catch (const std::out_of_range& e) {
-//         cout << "Error: " << e.what() << std::endl; 
-//     }
-
-//     return 0;
-// }
-
-
-// #include<iostream>
-// using namespace std;
-
-// class Dimension{
-//       private:
-//       int length;
-//       int width;
-//      public:
-//      Dimension(){};
-//      Dimension(int l,int w):length(l),width(w){
-
-//      } ;
-
-
-//      Dimension operator+(Dimension &D1){
-//         Dimension temp;
-//         temp.length=length+D1.length;
-//         temp.width=width+D1.width;
-//         return temp;
-//      }
-
-//      void output(){
-//         cout<<length<<":"<<width<<endl;
-//      }
-
-
-
-
-
-
-
-
-
-// };
-
-
-
-
-
-
-
-// int main(){
-
-//     Dimension d1(12,16),d2(12,4),res;
-//     res=d1+d2;
-//     res.output();
-//     return 0;
-// }
-
-
-
 #include <iostream>
-#include <vector>
+#include <stdexcept> 
 
-// Base class representing a generic animal
-class Animal {
+using namespace std;
+
+
+class DynamicArray {
+private:
+    int* data;   
+    size_t size;
+
 public:
-    // Virtual destructor ensures derived class destructors are called
-    virtual ~Animal() {}
+    
+    DynamicArray(size_t size) : size(size) {
+        data = new int[size]; 
+    }
 
-    // Virtual function that derived classes will override
-    virtual void speak() const {
-        std::cout << "Animal makes a sound." << std::endl;
+    
+    ~DynamicArray() {
+        delete[] data; 
+    }
+
+   
+    int& operator[](std::size_t index) {
+        if (index >= size) {
+            throw out_of_range("Index out of range"); 
+        }
+        return data[index]; 
+    }
+
+   
+    size_t getSize() const {
+        return size;
     }
 };
-
-// Derived class representing a Dog
-class Dog : public Animal {
-public:
-    // Override the speak method for Dog
-    void speak() const override {
-        std::cout << "Dog barks: Woof!" << std::endl;
-    }
-};
-
-// Derived class representing a Cat
-class Cat : public Animal {
-public:
-    // Override the speak method for Cat
-    void speak() const override {
-        std::cout << "Cat meows: Meow!" << std::endl;
-    }
-};
-
 
 int main() {
-   
-    std::vector<Animal*> animals;
+    
+    DynamicArray arr(5);
 
-   
-    animals.push_back(new Dog());
-    animals.push_back(new Cat());
-    animals.push_back(new Animal());
-
-   
-    for (const auto& animal : animals) {
-        animal->speak(); 
+  
+    for (std::size_t i = 0; i < arr.getSize(); ++i) {
+        arr[i] = i * 10; 
     }
 
    
-    for (auto& animal : animals) {
-        delete animal;  
+    std::cout << "Array contents: ";
+    for (std::size_t i = 0; i < arr.getSize(); ++i) {
+        std::cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    try {
+        cout << "Attempting to access index 6: " << arr[6] << std::endl;
+    } catch (const std::out_of_range& e) {
+        cout << "Error: " << e.what() << std::endl; 
     }
 
     return 0;
 }
+
+
+#include<iostream>
+using namespace std;
+
+class Dimension{
+      private:
+      int length;
+      int width;
+     public:
+     Dimension(){};
+     Dimension(int l,int w):length(l),width(w){
+
+     } ;
+
+
+     Dimension operator+(Dimension &D1){
+        Dimension temp;
+        temp.length=length+D1.length;
+        temp.width=width+D1.width;
+        return temp;
+     }
+
+     void output(){
+        cout<<length<<":"<<width<<endl;
+     }
+
+
+
+
+
+
+
+
+
+};
+
+
+
+
+
+
+
+int main(){
+
+    Dimension d1(12,16),d2(12,4),res;
+    res=d1+d2;
+    res.output();
+    return 0;
+}
+
+
+
+// #include <iostream>
+// #include <vector>
+
+// // Base class representing a generic animal
+// class Animal {
+// public:
+//     // Virtual destructor ensures derived class destructors are called
+//     virtual ~Animal() {}
+
+//     // Virtual function that derived classes will override
+//     virtual void speak() const {
+//         std::cout << "Animal makes a sound." << std::endl;
+//     }
+// };
+
+// // Derived class representing a Dog
+// class Dog : public Animal {
+// public:
+//     // Override the speak method for Dog
+//     void speak() const override {
+//         std::cout << "Dog barks: Woof!" << std::endl;
+//     }
+// };
+
+// // Derived class representing a Cat
+// class Cat : public Animal {
+// public:
+//     // Override the speak method for Cat
+//     void speak() const override {
+//         std::cout << "Cat meows: Meow!" << std::endl;
+//     }
+// };
+
+
+// int main() {
+   
+//     std::vector<Animal*> animals;
+
+   
+//     animals.push_back(new Dog());
+//     animals.push_back(new Cat());
+//     animals.push_back(new Animal());
+
+   
+//     for (const auto& animal : animals) {
+//         animal->speak(); 
+//     }
+
+   
+//     for (auto& animal : animals) {
+//         delete animal;  
+//     }
+
+//     return 0;
+// }
