@@ -444,7 +444,7 @@ int main() {
 
     // Polymorphic behavior - calling makeSound on objects of base class type
     Animal* animal1 = &dog;
-    Animal* animal2 = &cat;
+    Animal* animal2 = &dog;
 
     // Calling makeSound for each object
     animal1->makeSound(); // Output will be "Dog barks"
