@@ -439,8 +439,8 @@ public:
 
 int main() {
     // Create instances of Dog and Cat
-    Dog dog;
-    Cat cat;
+    Dog cat;
+    Cat dog;
 
     // Polymorphic behavior - calling makeSound on objects of base class type
     Animal* animal1 = &cat;
