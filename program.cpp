@@ -443,7 +443,7 @@ int main() {
     Cat cat;
 
     // Polymorphic behavior - calling makeSound on objects of base class type
-    Animal* animal1 = &dog;
+    Animal* animal1 = &cat;
     Animal* animal2 = &dog;
 
     // Calling makeSound for each object
