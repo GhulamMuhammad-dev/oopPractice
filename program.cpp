@@ -406,3 +406,49 @@
 
 //     return 0;
 // }
+
+
+#include <iostream>
+
+// Base class
+class Animal {
+public:
+    // Virtual function
+    virtual void makeSound() {
+        std::cout << "Animal makes a sound" << std::endl;
+    }
+};
+
+// Derived class 1
+class Dog : public Animal {
+public:
+    // Override the makeSound function
+    void makeSound() override {
+        std::cout << "Dog barks" << std::endl;
+    }
+};
+
+// Derived class 2
+class Cat : public Animal {
+public:
+    // Override the makeSound function
+    void makeSound() override {
+        std::cout << "Cat meows" << std::endl;
+    }
+};
+
+int main() {
+    // Create instances of Dog and Cat
+    Dog dog;
+    Cat cat;
+
+    // Polymorphic behavior - calling makeSound on objects of base class type
+    Animal* animal1 = &dog;
+    Animal* animal2 = &cat;
+
+    // Calling makeSound for each object
+    animal1->makeSound(); // Output will be "Dog barks"
+    animal2->makeSound(); // Output will be "Cat meows"
+
+    return 0;
+}
