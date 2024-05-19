@@ -414,16 +414,14 @@
 class Animal {
 public:
     // Virtual function
-    virtual void makeSound() {
-        std::cout << "Animal makes a sound" << std::endl;
-    }
+    virtual void makeSound()=0;
 };
 
 // Derived class 1
 class Dog : public Animal {
 public:
     // Override the makeSound function
-    void makeSound() override {
+    void makeSound()  override{
         std::cout << "Dog barks" << std::endl;
     }
 };
