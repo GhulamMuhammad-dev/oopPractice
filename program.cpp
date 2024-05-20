@@ -50,49 +50,44 @@
 //     return 0;
 // }
 
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
 
 
-class Complex{
-     private:
-     int real;
-     int img;
-     public:
-     Complex(){};
-     Complex(int real,int img){
-       this->real=real;
-       this->img=img;
-     }
-     void showValues(){
-        cout<<"( "<<real<<","<<img<<" )"<<"\n";
+// class Complex{
+//      private:
+//      int real;
+//      int img;
+//      public:
+//      Complex(){};
+//      Complex(int real,int img){
+//        this->real=real;
+//        this->img=img;
+//      }
+//      void showValues(){
+//         cout<<"( "<<real<<","<<img<<" )"<<"\n";
         
-            }
+//             }
 
-       Complex operator+(const Complex &other)const{
-       Complex temp;
-       temp.real=this->real+other.real;
-       temp.img=img+other.img;
-       return temp;
-    }
-
-
+//        Complex operator+(const Complex &other)const{
+//        Complex temp;
+//        temp.real=this->real+other.real;
+//        temp.img=img+other.img;
+//        return temp;
+//     }
 
 
-};
+// };
 
 
 
 
+// int main(){
 
 
+// Complex c1(4,5),c2(5,5),res;
+// res=c1+c2;
+// res.showValues();
 
-int main(){
-
-
-Complex c1(4,5),c2(5,5),res;
-res=c1+c2;
-res.showValues();
-
-    return 0;
-}
+//     return 0;
+// }
