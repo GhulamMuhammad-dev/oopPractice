@@ -1,62 +1,142 @@
-// #include <iostream>
-// #include <vector>
-// #include <algorithm>
-// #include <numeric> 
+#include <iostream>
+#include <string>
 
-// int main() {
-//     std::vector<int> vec = {1, 2, 3, 4, 5};
+// Base class
+class Monster {
+protected:
+    std::string name;
+    int strength;
+    int health;
+    std::string movementStyle;
+    std::string attackBehavior;
 
-  
-//     std::sort(vec.begin(), vec.end());
+public:
+    Monster(std::string n, int str, int hp, std::string move, std::string attack)
+        : name(n), strength(str), health(hp), movementStyle(move), attackBehavior(attack) {}
 
-//     auto it = std::find(vec.begin(), vec.end(), 3);
-//     if (it != vec.end()) {
-//         std::cout << "Element found: " << *it << std::endl;
-//     }
-    
-//     int sum = std::accumulate(vec.begin(), vec.end(), 0);
-//     std::cout << "Sum of elements: " << sum << std::endl;
+    virtual void display() {
+        std::cout << "Name: " << name << "\nStrength: " << strength 
+                  << "\nHealth: " << health << "\nMovement Style: " << movementStyle 
+                  << "\nAttack Behavior: " << attackBehavior << std::endl;
+    }
 
-//     return 0;
-// }
+    virtual void move() {
+        std::cout << name << " is " << movementStyle << std::endl;
+    }
 
-#include<iostream>
-#include<string>
-using namespace std;
+    virtual void attack() {
+        std::cout << name << " attacks by " << attackBehavior << std::endl;
+    }
 
-class Monster{
-     private:
-     int health;
-     int Attack;
-     
-
-     
-
-
-
-
-
-
-
+    virtual ~Monster() = default; // Virtual destructor for proper cleanup of derived classes
 };
 
-int main(){
+
+class Dragon : public Monster {
+public:
+    Dragon(std::string n)
+        : Monster(n, 100, 300, "flying", "breathing fire") {}
+
+    void display() override {
+        std::cout << "Dragon - ";
+        Monster::display();
+    }
+
+    void move() override {
+        std::cout << name << " soars through the sky.\n";
+    }
+
+    void attack() override {
+        std::cout << name << " breathes a scorching fire.\n";
+    }
+};
 
 
+class Zombie : public Monster {
+public:
+    Zombie(std::string n)
+        : Monster(n, 50, 100, "shuffling", "biting") {}
+
+    void display() override {
+        std::cout << "Zombie - ";
+        Monster::display();
+    }
+
+    void move() override {
+        std::cout << name << " shuffles forward.\n";
+    }
+
+    void attack() override {
+        std::cout << name << " lunges to bite.\n";
+    }
+};
 
 
+class Goblin : public Monster {
+public:
+    Goblin(std::string n)
+        : Monster(n, 30, 50, "sneaking", "stabbing") {}
 
+    void display() override {
+        std::cout << "Goblin - ";
+        Monster::display();
+    }
 
+    void move() override {
+        std::cout << name << " sneaks around.\n";
+    }
 
+    void attack() override {
+        std::cout << name << " stabs with a dagger.\n";
+    }
+};
 
+class Troll : public Monster {
+public:
+    Troll(std::string n)
+        : Monster(n, 80, 200, "lumbering", "smashing") {}
 
+    void display() override {
+        std::cout << "Troll - ";
+        Monster::display();
+    }
 
+    void move() override {
+        std::cout << name << " lumbers slowly.\n";
+    }
 
+    void attack() override {
+        std::cout << name << " smashes with a club.\n";
+    }
+};
 
+int main() {
+    Dragon draco("Draco");
+    Zombie zed("Zed");
+    Goblin gob("Gobby");
+    Troll trog("Trog");
 
+    draco.display();
+    draco.move();
+    draco.attack();
 
+    std::cout << std::endl;
 
+    zed.display();
+    zed.move();
+    zed.attack();
 
+    std::cout << std::endl;
+
+    gob.display();
+    gob.move();
+    gob.attack();
+
+    std::cout << std::endl;
+
+    trog.display();
+    trog.move();
+    trog.attack();
 
     return 0;
 }
