@@ -154,7 +154,7 @@ class Monster{
      string moveBehaviour;
     
     public:
-      Monster(string n,int hel,string abi):name(n),health(hel),ability(abi){};
+      Monster(string n,int hel,string abi,string mB):name(n),health(hel),ability(abi),moveBehaviour(mB){};
 
       virtual void display(){
         cout<<"name:"<<name<<"health:"<<health<<endl;
@@ -175,7 +175,43 @@ class Monster{
 };
 
 
+class Dragon:Monster{
+    public:
+      Dragon(string na):Monster(na,100,"fireBall","fast"){};
 
+       void display(){
+         Monster::display();
+       }
+
+       void move(){
+         Monster::move();
+       }
+
+       void strength(){
+        Monster::strength();
+       }
+        
+         
+};
+
+class Zombi:Monster{
+    public:
+      Zombi(string na):Monster(na,100,"bitting",""){};
+
+       void display(){
+         Monster::display();
+       }
+
+       void move(){
+         Monster::move();
+       }
+
+       void strength(){
+        Monster::strength();
+       }
+        
+         
+};
 
 
 
