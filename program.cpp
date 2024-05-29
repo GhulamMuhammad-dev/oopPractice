@@ -222,5 +222,10 @@ int main(){
     dragon.display();
     dragon.move();
     dragon.strength();
+    cout<<"...................."<<endl;
+    Zombi zombi("zombi");
+    zombi.display();
+    zombi.move();
+    zombi.strength();
     return 0;
 }
