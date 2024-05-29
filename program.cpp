@@ -196,17 +196,17 @@ class Dragon:Monster{
 
 class Zombi:Monster{
     public:
-      Zombi(string na):Monster(na,100,"bitting",""){};
+      Zombi(string na):Monster(na,100,"bitting","crawling"){};
 
-       void display(){
+       void display() override{
          Monster::display();
        }
 
-       void move(){
+       void move() override{
          Monster::move();
        }
 
-       void strength(){
+       void strength() override{
         Monster::strength();
        }
         
@@ -218,5 +218,9 @@ class Zombi:Monster{
 
 
 int main(){
+    Dragon dragon("dragon");
+    dragon.display();
+    dragon.move();
+    dragon.strength();
     return 0;
 }
