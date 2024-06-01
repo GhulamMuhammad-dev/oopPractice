@@ -2,36 +2,40 @@
 #include<string> 
 using namespace std;
 
-class Shape {
-public:
-    virtual void draw()=0; 
+class Animal{
+        private:
+        string name;
+        int health;
+        public:
+
+        void setdata(string na,int h){
+              name=na;
+              health=h;
+        }
+     
+       void getData() const{
+        cout<<name<<" "<<health<<endl;
+       }
+
+
+
+
 };
 
-class Circle : public Shape {
-public:
-    void draw() override {
-        cout << "Drawing circle" << endl;
-    }
-};
 
-class Square : public Shape {
-public:
-    void draw() override {
-        cout << "Drawing square" << endl;
-    }
-};
+
+
 
 int main(){
-  Shape* shape;
-  
-Circle circle;
-Square square;
 
-shape=&circle;
+ Animal dog;
 
-circle.draw();
+dog.setdata("dog",100);
+dog.getData();
+   
 
-shape = &square;
-shape->draw(); // Output: Drawing square
+
+
+
   return 0;
 }
