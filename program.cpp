@@ -30,3 +30,30 @@ public:
     int getY() const { return y; }
     std::string getName() const { return name; }
 };
+
+
+
+
+class Item {
+private:
+    std::string name;
+
+public:
+    Item(const std::string& name) : name(name) {}
+
+    std::string getName() const { return name; }
+};
+
+
+class Enemy {
+private:
+    std::string name;
+    int damage;
+
+public:
+    Enemy(const std::string& name, int damage)
+        : name(name), damage(damage) {}
+
+    std::string getName() const { return name; }
+    int getDamage() const { return damage; }
+};
